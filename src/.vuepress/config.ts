@@ -29,9 +29,9 @@ export default defineConfig({
       */
     // theme: "./theme/index.ts",
     themeConfig: {
-        repo: 'epstechtheatre/tech-wiki',
+        repo: 'epstechtheatre/wiki-next',
         editLinks: true,
-        docsDir: '',
+        docsDir: 'src',
         editLinkText: '',
         lastUpdated: true,
         nav: [

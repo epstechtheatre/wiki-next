@@ -51,8 +51,8 @@ export default {
 
       const {
         repo,
-        docsDir = '',
-        docsBranch = 'master',
+        docsDir = 'src',
+        docsBranch = 'main',
         docsRepo = repo
       } = this.$site.themeConfig
 
@@ -109,7 +109,7 @@ export default {
         : `https://github.com/${docsRepo}`
       return (
         base.replace(endingSlashRE, '')
-        + '/edit'
+        + '/blob'
         + `/${docsBranch}/`
         + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
         + path

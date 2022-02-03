@@ -47,6 +47,11 @@ module.exports = (options, ctx) => {
         before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
         after: () => '</details>\n'
       }],
+
+      ['container', {
+        type: "command",
+      }],
+
       ['smooth-scroll', enableSmoothScroll]
     ]
   }

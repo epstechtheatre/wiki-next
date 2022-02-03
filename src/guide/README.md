@@ -11,3 +11,8 @@ test
 ::: danger
 Test
 :::
+
+::::details 
+::: command
+1, At, Full & Enter
+:::

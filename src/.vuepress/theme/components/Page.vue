@@ -20,7 +20,7 @@ export default {
     components: { PageEdit, PageNav },
     props: ['sidebarItems'],
 
-    mounted() {
+    beforeMount() {
         document.querySelectorAll(".custom-block.command").forEach(item => {
             const target = item.childElementCount == 2 ? item.children[1] : item.children[0]
             target.classList.add("lighting_command_container")

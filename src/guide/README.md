@@ -16,3 +16,8 @@ Test
 ::: command
 1, At, Full & Enter
 :::
+::::
+
+::: tip
+<TestingThing/>
+:::

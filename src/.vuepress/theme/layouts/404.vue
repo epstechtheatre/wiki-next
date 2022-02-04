@@ -1,4 +1,5 @@
 <template>
+  <v-app>
   <div class="theme-container">
     <div class="theme-default-content">
       <h1>404</h1>
@@ -10,6 +11,7 @@
       </RouterLink>
     </div>
   </div>
+  </v-app>
 </template>
 
 <script>

@@ -5,6 +5,7 @@
         "hardkey",
         "softkey",
         "techwiki",
-        "vuepress"
+        "vuepress",
+        "vuetify"
     ]
 }

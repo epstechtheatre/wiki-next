@@ -1,4 +1,5 @@
 <template>
+  <v-app>
   <div
     class="theme-container"
     :class="pageClasses"
@@ -45,6 +46,7 @@
       </Page>
     </Transition>
   </div>
+  </v-app>
 </template>
 
 <script>

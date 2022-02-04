@@ -1,7 +1,4 @@
-import path from "path"
-import { defineConfig } from "vuepress/config";
-
-export default defineConfig({
+module.exports = ({
     /**
     * Ref：https://v1.vuepress.vuejs.org/config/#title
      */
@@ -17,9 +14,11 @@ export default defineConfig({
       * ref：https://v1.vuepress.vuejs.org/config/#head
       */
     head: [
-		['meta', { name: 'theme-color', content: '#3eaf7c' }],
+        ['meta', { name: 'theme-color', content: '#3eaf7c' }],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-        ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
+        ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+
+        ['link', { rel: 'stylesheet', href: `https://fonts.googleapis.com/css?family=Material+Icons` }],
     ],
 
     /**

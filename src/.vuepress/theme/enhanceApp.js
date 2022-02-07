@@ -1,8 +1,13 @@
 import '../../../node_modules/material-design-icons-iconfont/dist/material-design-icons.css';
 import "../../../node_modules/vuetify/dist/vuetify.css";
 import '../../../node_modules/@mdi/font/css/materialdesignicons.css';
-import TestingThing from "./components/TestingThing.vue";
 import Vuetify from 'vuetify';
+
+
+import TestingThing from "./components/TestingThing.vue";
+import AccordionTest from "./components/AccordionTest.vue";
+import LightingCommand from "./components/Lighting/Command.vue";
+
 
 export default ({
     Vue, // the version of Vue being used in the VuePress app
@@ -18,4 +23,6 @@ export default ({
         }
     });
     Vue.component("TestingThing", TestingThing);
+    Vue.component("AccordionTest", AccordionTest);
+    Vue.component("LightingCommand", LightingCommand);
 }

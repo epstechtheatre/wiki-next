@@ -2,7 +2,7 @@
   .custom-block-title
     font-weight 600
     margin-bottom -0.4rem
-  &.tip, &.warning, &.danger
+  &.tip, &.warning, &.danger &.info
     padding .1rem 1.5rem
     border-left-width .5rem
     border-left-style solid
@@ -24,6 +24,14 @@
     color darken(red, 70%)
     .custom-block-title
       color darken(red, 40%)
+    a
+      color $textColor
+  &.info
+    background-color #e6fcff
+    border-color darken(blue, 20%)
+    color darken(blue, 70%)
+    .custom-block-title
+      color darken(blue, 40%)
     a
       color $textColor
   &.details

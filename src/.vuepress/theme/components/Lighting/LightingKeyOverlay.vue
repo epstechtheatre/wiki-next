@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+import Vue from "vue";
 export default {
     props: {
         keyName: String
@@ -10,8 +11,21 @@ export default {
 
     methods: {
         getUserGraphicPreference: () => {
+            //TODO, return cookie result instead
             return "/images/svg/keyboard-overlay-source-element-ii.svg"
         }
+    },
+    mounted() {
+        Vue.nextTick(() => {
+            const EDGE_BUFFER = 5
+            const elements = document.querySelectorAll(".lighting_key_svg_graphic") as NodeListOf<HTMLElement>;
+
+            let sidebarWidth = 0
+            const sidebarElement = document.querySelector("aside.sidebar");
+            if (sidebarElement) {
+                sidebarWidth = window.getComputedStyle(sidebarElement)?.transform !== "none" ? 0 : sidebarElement.scrollWidth
+            }
+        }) 
     }
 }
 
@@ -23,7 +37,7 @@ export default {
     top: 120%;
 
     pointer-events: none;
-    max-width: 450px; 
+    max-width: 450px;
     z-index: 300;
     background-color: #f5f5f5d0;
     border-radius: 15px;

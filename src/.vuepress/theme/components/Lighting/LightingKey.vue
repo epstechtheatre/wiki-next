@@ -6,8 +6,9 @@
         v-on:mouseleave="hover=false"
     >
         <span>{{stylize(name)}}</span>
-
-        <Lighting-Key-Overlay v-if="hover==true" :keyName="name"/>
+        <ClientOnly v-if="hover==true">
+            <Lighting-Key-Overlay :keyName="name"/>
+        </ClientOnly>
     </div>
 </template>
 

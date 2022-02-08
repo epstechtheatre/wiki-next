@@ -3,7 +3,9 @@
         "epstechtheatre",
         "epstechwiki",
         "hardkey",
+        "keyname",
         "softkey",
+        "softkeys",
         "techwiki",
         "vuepress",
         "vuetify"

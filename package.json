@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Tech Theatre Wiki",
   "scripts": {
-    "build": "vuepress build src",
+    "build": "vuepress build src --port 6060",
     "dev": "vuepress dev src",
     "make:component": "vue-cli-service make:component",
     "make:directive": "vue-cli-service make:directive",

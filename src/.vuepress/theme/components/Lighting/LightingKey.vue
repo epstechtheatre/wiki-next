@@ -4,10 +4,17 @@
         :class="{softkey: isSoftkey(name), hardkey: !isSoftkey(name), inline: inline == 'true'}"
         v-on:mouseover="hover=true"
         v-on:mouseleave="hover=false"
+        :keyName="name"
     >
-        <span>{{stylize(name)}}</span>
+        <span :keyName="name">{{stylize(name)}}</span>
         <ClientOnly v-if="hover==true">
-            <Lighting-Key-Overlay :keyName="name"/>
+            <Transition 
+                name="fade"
+                mode="out-in">
+                <keep-alive>
+                    <Lighting-Key-Overlay :keyName="name"/>
+                </keep-alive>
+            </Transition>
         </ClientOnly>
     </div>
 </template>
@@ -73,13 +80,11 @@ export default {
     } */
 
     .lighting_command_key.inline {
-        background-color: black;
         min-width: 30px;
         max-width: unset;
         height: 30px !important;
         min-height: 0px;
         text-align: center;
-        vertical-align: middle;
     }
 
     .lighting_command_key:hover {

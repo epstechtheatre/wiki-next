@@ -12,9 +12,9 @@
     </main>
 </template>
 
-<script lang="ts">
-import PageEdit from './PageEdit.vue'
-import PageNav from './PageNav.vue'
+<script>
+import PageEdit from './PageEdit.vue';
+import PageNav from './PageNav.vue';
 
 export default {
     components: { PageEdit, PageNav },
@@ -53,34 +53,6 @@ export default {
                 })
             }
         })
-
-        function createKeyEl(elName: string, simultaneous = false): Node {
-            const newEl = document.createElement("span");
-            newEl.textContent = elName.trim();
-            newEl.classList.add("lighting_console_key");
-            if (simultaneous) newEl.classList.add("lighting_simultaneous");
-
-            if (elName.startsWith("{") && elName.endsWith("}")) {
-                newEl.classList.add("lighting_softkey");
-            } else {
-                newEl.classList.add("lighting_hardkey");
-            }
-
-            return newEl;
-        }
-
-        function createSepEl(simultaneous = false): Node {
-            const newEl = document.createElement("span");
-            newEl.classList.add("lighting_command_separator");
-            if (simultaneous) {
-                newEl.classList.add("simultaneous");
-                newEl.textContent = "&"
-            } else {
-                newEl.textContent = ">"
-            }
-
-            return newEl;
-        }
     }
 }
 

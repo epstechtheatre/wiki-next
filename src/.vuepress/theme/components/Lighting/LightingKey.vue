@@ -7,15 +7,15 @@
         :keyName="name"
     >
         <span :keyName="name">{{stylize(name)}}</span>
-        <ClientOnly v-if="hover==true">
-            <Transition 
-                name="fade"
-                mode="out-in">
-                <keep-alive>
-                    <Lighting-Key-Overlay :keyName="name"/>
-                </keep-alive>
-            </Transition>
-        </ClientOnly>
+        <Transition 
+            name="fade"
+            mode="out-in"
+            v-if="hover==true"
+        >
+            <keep-alive>
+                <Lighting-Key-Overlay :keyName="name"/>
+            </keep-alive>
+        </Transition>
     </div>
 </template>
 

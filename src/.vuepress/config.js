@@ -21,6 +21,8 @@ module.exports = ({
         ['link', { rel: 'stylesheet', href: `https://fonts.googleapis.com/css?family=Material+Icons` }],
     ],
 
+    base: "/wiki-next/",
+
     /**
       * Theme configuration, here is the default theme configuration for VuePress.
       *

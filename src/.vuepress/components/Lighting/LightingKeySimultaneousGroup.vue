@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import LightingKeySeparator from "./LightingKeySeparator.vue";
-import LightingKey from "./LightingKey.vue";
+import LightingKey from "../LightingKey.vue";
 
 export default {
     props: {
@@ -24,7 +24,7 @@ export default {
             type: String,
             default: undefined,
             validator: (val: string) => {
-                return val == "both" || val == "simultaneous" || val == "ordered" || val === undefined
+                return val == "both" || val == "simultaneousKeys" || val == "normalKeys" || val === undefined
             }
         },
         inline: {

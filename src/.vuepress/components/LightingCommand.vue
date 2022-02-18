@@ -3,40 +3,41 @@
         class="lighting_command_block"
         :class="{ 'inline': inline == 'true' }"
     >
-    <div class="lighting_command">
-        <span v-for="item in getIndexedCommandArray(command)" :key='item[0]'>
-            <span v-if="item[1].includes('&')">
-                <Lighting-Key-Simultaneous-Group :keys='splitIndexedSimultaneousCommandsArray(item[1])' :asWordMode='asWordSeparators' :inline="inline"/>
-                <Lighting-Key-Separator v-if="item[0] < getIndexedCommandArray(command).length - 1" :asWordMode="asWordSeparators"/>
+        <div class="lighting_command">
+            <span v-for="item in getIndexedCommandArray(elementCommand)" :key='item[0]'>
+                <span v-if="item[1].includes('&')">
+                    <Lighting-Key-Simultaneous-Group :keys='splitIndexedSimultaneousCommandsArray(item[1])' :asWordMode='asWordSeparators' :inline="inline"/>
+                    <Lighting-Key-Separator v-if="item[0] < getIndexedCommandArray(elementCommand).length - 1" :asWordMode="asWordSeparators"/>
+                </span>
+                <span v-else>
+                    <Lighting-Key :name='item[1]' :inline="inline"/>
+                    <Lighting-Key-Separator v-if="item[0] < getIndexedCommandArray(elementCommand).length - 1" :asWordMode="asWordSeparators"/>
+                </span>
             </span>
-            <span v-else>
-                <Lighting-Key :name='item[1]' :inline="inline"/>
-                <Lighting-Key-Separator v-if="item[0] < getIndexedCommandArray(command).length - 1" :asWordMode="asWordSeparators"/>
-            </span>
-        </span>
-    </div>
-    
-    <div v-if="inline == 'false' && showTip == 'true'" class="lighting_command_tip">
-        <div class="custom-block tip">
-            <div class="custom-block-title">Tip</div>
-            <p>Hover over a key to see where it is located on the keyboard</p>
         </div>
-    </div>
-    <div v-if="inline == 'false' && showLegend == 'true'">
-        <div class="custom-block warning">
-            <div class="custom-block-title">Legend</div>
-            <p>Hover over a key to see where it is located on the keyboard</p>
+        
+        <div v-if="inline == 'false' && showTip == 'true'" class="lighting_command_tip">
+            <div class="custom-block tip">
+                <div class="custom-block-title">Tip</div>
+                <p>Hover over a key to see where it is located on the keyboard</p>
+            </div>
         </div>
-    </div>
-
+        <div v-if="inline == 'false' && showLegend == 'true'">
+            <div class="custom-block warning">
+                <div class="custom-block-title">Legend</div>
+                <p>Hover over a key to see where it is located on the keyboard</p>
+            </div>
+        </div>
+        <pre><slot></slot></pre>
     </div>
 </template>
 
 
 <script lang="ts">
+
+import LightingKeySimultaneousGroup from "./Lighting/LightingKeySimultaneousGroup.vue";
+import LightingKeySeparator from "./Lighting/LightingKeySeparator.vue";
 import LightingKey from "./LightingKey.vue";
-import LightingKeySeparator from "./LightingKeySeparator.vue";
-import LightingKeySimultaneousGroup from "./LightingKeySimultaneousGroup.vue";
 
 export default {
     props: {
@@ -66,7 +67,7 @@ export default {
             type: String,
             default: undefined,
             validator: (val: string) => {
-                return val == "both" || val == "simultaneous" || val == "ordered" || val === undefined
+                return val == "both" || val == "simultaneousKeys" || val == "normalKeys" || val === undefined
             }
         }
     },
@@ -77,6 +78,18 @@ export default {
         LightingKeySimultaneousGroup: LightingKeySimultaneousGroup
     },
 
+    computed: {
+        elementCommand: function (): string {
+
+            //@ts-ignore
+            if (this.$props.command?.length > 0) return this.$props.command;
+            //@ts-ignore
+            if (this.$slots?.default[0]?.children[0] && this.$slots.default[0]?.children[0]?.text?.length > 0) return this.$slots.default[0]?.children[0]?.text;
+
+            return "Invalid Command"
+        }
+    },
+    
     methods: {
         getIndexedCommandArray: (command: string) => {
             const output = command.trim().split(",").map((item, index) => [index, item.trim()]);
@@ -91,6 +104,7 @@ export default {
 
 <style>
     .lighting_command_block {
+        z-index: 1000;
         display: block;
         border-radius: 5px;
         border-style: solid;
@@ -121,5 +135,9 @@ export default {
     .lighting_command_block.inline {
         display: inline-block;
         padding: 0px;
+    }
+
+    pre {
+        display: none;
     }
 </style>

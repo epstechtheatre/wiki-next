@@ -20,7 +20,7 @@ export default {
     methods: {
         getUserGraphicPreference: () => {
             //TODO, return cookie result instead
-            return "/images/svg/keyboard-overlay-source-element-ii.svg"
+            return "/images/svg/keyboard-overlay-source-element-ii.svg";
         }
     },
     mounted() {
@@ -226,7 +226,6 @@ function getSvgShape(element: any): any {
 
     pointer-events: none;
     max-width: 450px;
-    z-index: 300;
     background-color: #f5f5f5d0;
     border-radius: 15px;
     border: 1px ridge #BEBEBE;

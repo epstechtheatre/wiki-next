@@ -122,29 +122,31 @@ function resolvePath (relative, base, append) {
  * @returns { SidebarGroup }
  */
 export function resolveSidebarItems (page, regularPath, site, localePath) {
-  const { pages, themeConfig } = site
 
-  const localeConfig = localePath && themeConfig.locales
-    ? themeConfig.locales[localePath] || themeConfig
-    : themeConfig
+    const { pages, themeConfig } = site
 
-  const pageSidebarConfig = page.frontmatter.sidebar || localeConfig.sidebar || themeConfig.sidebar
-  if (pageSidebarConfig === 'auto') {
-    return resolveHeaders(page)
-  }
+    const localeConfig = localePath && themeConfig.locales
+        ? themeConfig.locales[localePath] || themeConfig
+        : themeConfig
 
-  const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
-  if (!sidebarConfig) {
-    return []
-  } else {
-    const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
-    if (config === 'auto') {
-      return resolveHeaders(page)
+    const pageSidebarConfig = page.frontmatter.sidebar || localeConfig.sidebar || themeConfig.sidebar
+    if (pageSidebarConfig === 'auto') {
+        return resolveHeaders(page)
     }
-    return config
-      ? config.map(item => resolveItem(item, pages, base))
-      : []
-  }
+
+    const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
+    if (!sidebarConfig) {
+        return []
+    } else {
+        const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
+        if (config === 'auto') {
+        return resolveHeaders(page)
+        }
+
+        return config
+        ? config.map(item => resolveItem(item, pages, base))
+        : []
+    }
 }
 
 /**

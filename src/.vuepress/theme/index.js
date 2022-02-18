@@ -29,7 +29,6 @@ module.exports = (options, ctx) => {
       ['@vuepress/active-header-links', options.activeHeaderLinks],
       '@vuepress/search',
       '@vuepress/plugin-nprogress',
-      "@vuepress/client",
       ['container', {
         type: 'tip',
         defaultTitle: "TIP"
@@ -50,8 +49,7 @@ module.exports = (options, ctx) => {
         type: 'details',
         before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
         after: () => '</details>\n'
-      }]
-
+      }],
       ['smooth-scroll', enableSmoothScroll]
     ]
   }

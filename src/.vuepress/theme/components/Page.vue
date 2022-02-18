@@ -3,11 +3,13 @@
         <slot name="top" />
 
         <Content :key="$page.path" class="theme-default-content"/>
+        <PageTag/>
         <PageEdit />
 
         <PageNav v-bind="{ sidebarItems }" />
 
         <slot name="bottom" />
+        <Copyright />
 
     </main>
 </template>

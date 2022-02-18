@@ -13,14 +13,14 @@
             v-if="hover==true"
         >
             <keep-alive>
-                <Lighting-Key-Overlay :keyName="name"/>
+                <Lighting-Key-Overlay :keyName="name" :revertToSoftkey="(isSoftkey(name) == true).toString()"/>
             </keep-alive>
         </Transition>
     </div>
 </template>
 
 <script lang="ts">
-import LightingKeyOverlay from "./LightingKeyOverlay.vue";
+import LightingKeyOverlay from "./Lighting/LightingKeyOverlay.vue";
 export default {
     props: {
         name: String,
@@ -53,6 +53,7 @@ export default {
 
 <style scoped>
     .lighting_command_key {   
+        z-index: 1000;
         display: flex;
         justify-content: center;
         align-items: center;

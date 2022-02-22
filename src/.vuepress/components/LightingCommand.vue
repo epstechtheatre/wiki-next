@@ -28,7 +28,7 @@
                 <p>Hover over a key to see where it is located on the keyboard</p>
             </div>
         </div>
-        <pre><slot></slot></pre>
+        <pre class="hide"><slot></slot></pre>
     </div>
 </template>
 
@@ -104,7 +104,7 @@ export default {
 
 <style>
     .lighting_command_block {
-        z-index: 1000;
+        z-index: 2;
         display: block;
         border-radius: 5px;
         border-style: solid;
@@ -137,7 +137,7 @@ export default {
         padding: 0px;
     }
 
-    pre {
+    pre.hide {
         display: none;
     }
 </style>

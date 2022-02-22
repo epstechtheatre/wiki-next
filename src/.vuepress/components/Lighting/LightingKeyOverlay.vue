@@ -224,6 +224,8 @@ function getSvgShape(element: any): any {
     display: flex;
     top: 120%;
 
+    z-index: 9999;
+
     pointer-events: none;
     max-width: 450px;
     background-color: #f5f5f5d0;
@@ -234,5 +236,11 @@ function getSvgShape(element: any): any {
     padding: 15px;
     overflow: visible;
     box-shadow: 1px 1px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 450px) {
+    .lighting_key_svg_graphic {
+        max-width: 100vw
+    }
 }
 </style>

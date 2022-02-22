@@ -1,21 +1,23 @@
 <template>
     <div 
         class="lighting_command_key lighting_command_component"
-        :class="{softkey: isSoftkey(name), hardkey: !isSoftkey(name), inline: inline == 'true'}"
+        :class="{softkey: isSoftkey(keyName), hardkey: !isSoftkey(keyName), inline: inline == 'true'}"
         v-on:mouseover="hover=true"
         v-on:mouseleave="hover=false"
-        :keyName="name"
+        :keyName="keyName"
     >
-        <span :keyName="name">{{stylize(name)}}</span>
+        <span :keyName="keyName">{{stylize(keyName)}}</span>
         <Transition 
             name="fade"
             mode="out-in"
             v-if="hover==true"
         >
             <keep-alive>
-                <Lighting-Key-Overlay :keyName="name" :revertToSoftkey="(isSoftkey(name) == true).toString()"/>
+                <Lighting-Key-Overlay :keyName="keyName" :revertToSoftkey="(isSoftkey(keyName) == true).toString()"/>
             </keep-alive>
         </Transition>
+
+        <pre class="hide"><slot></slot></pre>
     </div>
 </template>
 
@@ -35,6 +37,16 @@ export default {
     components: {
         LightingKeyOverlay: LightingKeyOverlay
     },
+    computed: {
+        keyName: function (): string {
+            //@ts-ignore
+            if (this.$props.name?.length > 0) return this.$props.name;
+            //@ts-ignore
+            if (this.$slots?.default[0]?.text && this.$slots.default[0]?.text?.length > 0) return this.$slots.default[0]?.text;
+
+            return "Invalid Key";
+        }
+    },
     data() {
         return {
             hover: false
@@ -53,8 +65,8 @@ export default {
 
 <style scoped>
     .lighting_command_key {   
-        z-index: 1000;
-        display: flex;
+        z-index: 2;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
 
@@ -90,5 +102,9 @@ export default {
 
     .lighting_command_key:hover {
         transform: translateY(2px);
+    }
+
+    pre.hide {
+        display: none;
     }
 </style>

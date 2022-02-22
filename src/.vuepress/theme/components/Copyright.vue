@@ -7,16 +7,20 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="stylus" scoped>
+@require "../styles/wrapper.styl"
+
 .copyright {
+    @extend $wrapper
+
     padding-top: 30px;
     right: 0%;
     position: absolute;
     text-align: right;
-    padding-right: 2.5rem;
 }
 
 .copyright-logo {
     width: 20vw;
+    max-width: 350px;
 }
 </style>

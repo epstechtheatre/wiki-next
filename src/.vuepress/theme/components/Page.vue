@@ -4,6 +4,7 @@
 
         <Content :key="$page.path" class="theme-default-content"/>
         <PageTag/>
+        <Authors/>
         <PageEdit />
 
         <PageNav v-bind="{ sidebarItems }" />
@@ -17,9 +18,12 @@
 <script>
 import PageEdit from './PageEdit.vue';
 import PageNav from './PageNav.vue';
+import Authors from "./Authors.vue";
+import Copyright from "./Copyright.vue";
+import PageTag from "./PageTag.vue"
 
 export default {
-    components: { PageEdit, PageNav },
+    components: { PageEdit, PageNav, Authors, Copyright, PageTag },
     props: ['sidebarItems'],
 
     beforeMount() {

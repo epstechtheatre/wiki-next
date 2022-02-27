@@ -1,7 +1,7 @@
 <template>
     <main class="page">
         <slot name="top" />
-
+        <LightingBoardPreferenceSelector class="lighting-board-preference-wrapper"/>
         <Content :key="$page.path" class="theme-default-content"/>
         <PageTag/>
         <Authors/>
@@ -21,9 +21,10 @@ import PageNav from './PageNav.vue';
 import Authors from "./Authors.vue";
 import Copyright from "./Copyright.vue";
 import PageTag from "./PageTag.vue"
+import LightingBoardPreferenceSelector from "./LightingBoardPreferenceSelector.vue"
 
 export default {
-    components: { PageEdit, PageNav, Authors, Copyright, PageTag },
+    components: { PageEdit, PageNav, Authors, Copyright, PageTag, LightingBoardPreferenceSelector},
     props: ['sidebarItems'],
 
     beforeMount() {
@@ -68,7 +69,14 @@ export default {
 @require '../styles/wrapper.styl'
 
 .page
-  padding-bottom 2rem
-  display block
+    padding-bottom 2rem
+    display block
+
+.lighting-board-preference-wrapper
+    @extend $wrapper
+    margin-top: $navbarHeight + 3px
+    margin-bottom: -20px !important
+    margin-left: 2.5rem
+</style>
 
 </style>

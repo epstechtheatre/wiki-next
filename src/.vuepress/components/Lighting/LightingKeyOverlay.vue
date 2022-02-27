@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import keyAliases from "../../json/lighting_key_name_alias.json";
-
+import {getSvgPathForPreference} from "../../util/lighting/lightingBoardCookieWrapper"
 export default {
     props: {
         keyName: String,
@@ -20,7 +20,7 @@ export default {
     methods: {
         getUserGraphicPreference: () => {
             //TODO, return cookie result instead
-            return "/images/svg/keyboard-overlay-source-element-ii.svg";
+            return getSvgPathForPreference();
         }
     },
     mounted() {

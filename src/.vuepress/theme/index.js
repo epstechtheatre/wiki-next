@@ -31,19 +31,27 @@ module.exports = (options, ctx) => {
       '@vuepress/plugin-nprogress',
       ['container', {
         type: 'tip',
-        defaultTitle: "TIP"
+        defaultTitle: "Tip",
+        before: info => `<v-alert border="left" colored-border elevation='2' dense type='success' class='custom-block'><div class='custom-block-title'>${info}</div>`,
+        after: () => `</v-alert>`
       }],
       ['container', {
         type: 'warning',
-        defaultTitle: "WARNING"
+        defaultTitle: "Warning",
+        before: info => `<v-alert border="left" colored-border elevation='2' dense type='warning' class='custom-block'><div class='custom-block-title'>${info}</div>`,
+        after: () => `</v-alert>`
       }],
       ['container', {
         type: 'danger',
-        defaultTitle: "DANGER"
+        defaultTitle: "Danger",
+        before: info => `<v-alert border="left" colored-border elevation='2' dense type='error' class='custom-block'><div class='custom-block-title'>${info}</div>`,
+        after: () => `</v-alert>`
       }],
       ['container', {
         type: 'info',
-        defaultTitle: "INFO"
+        defaultTitle: "Info",
+        before: info => `<v-alert border="left" colored-border elevation='2' dense type='info' class='custom-block'><div class='custom-block-title'>${info}</div>`,
+        after: () => `</v-alert>`
       }],
       ['container', {
         type: 'details',

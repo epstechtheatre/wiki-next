@@ -31,9 +31,9 @@ export default {
         const elements = document.querySelectorAll(".lighting_key_svg_graphic") as NodeListOf<HTMLElement>;
         elements.forEach(element => {
             element.addEventListener("load", () => {
-                const EDGE_BUFFER = 5
+                const EDGE_BUFFER = 0;
 
-                let sidebarWidth = 0
+                let sidebarWidth = 0;
                 const sidebarElement = document.querySelector("aside.sidebar");
                 if (sidebarElement) {
                     sidebarWidth = window.getComputedStyle(sidebarElement)?.transform !== "none" ? 0 : sidebarElement.scrollWidth

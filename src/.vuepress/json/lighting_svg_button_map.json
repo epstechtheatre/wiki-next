@@ -1,342 +1,342 @@
 [
     {
-        "url": "/Lighting_keyboard_about.html",
+        "url": "/lighting/keyboard buttons/About",
         "names": ["about"]
     },
     {
-        "url": "/Lighting_keyboard_assert.html",
+        "url": "/lighting/keyboard buttons/assert.html",
         "names": ["assert", "assert1", "assert2"]
     },
     {
-        "url": "/Lighting_keyboard_at.html",
+        "url": "/lighting/keyboard buttons/At",
         "names": ["at"]
     },
     {
-        "url": "/Lighting_keyboard_beampalette.html",
+        "url": "/lighting/keyboard buttons/BeamPalette.html",
         "names": ["beampalette"]
     },
     {
-        "url": "/Lighting_keyboard_block.html",
+        "url": "/lighting/keyboard buttons/Block.html",
         "names": ["block"]
     },
     {
-        "url": "/Lighting_keyboard_capture.html",
+        "url": "/lighting/keyboard buttons/Capture.html",
         "names": ["capture"]
     },
     {
-        "url": "/Lighting_keyboard_clear.html",
+        "url": "/lighting/keyboard buttons/Clear.html",
         "names": ["clear"]
     },
     {
-        "url": "/Lighting_keyboard_encoderpages.html",
+        "url": "/lighting/keyboard buttons/EncoderPages.html",
         "names": ["color"]
     },
     {
-        "url": "/Lighting_keyboard_colorpalette.html",
+        "url": "/lighting/keyboard buttons/ColorPalette.html",
         "names": ["colorpalette"]
     },
     {
-        "url": "/Lighting_keyboard_copyto_moveto.html",
+        "url": "/lighting/keyboard buttons/CopyTo_MoveTo.html",
         "names": ["copyto_moveto"]
     },
     {
-        "url": "/Lighting_keyboard_cue.html",
+        "url": "/lighting/keyboard buttons/Cue.html",
         "names": ["cue"]
     },
     {
-        "url": "/Lighting_keyboard_data.html",
+        "url": "/lighting/keyboard buttons/Data.html",
         "names": ["data"]
     },
     {
-        "url": "/Lighting_keyboard_delay.html",
+        "url": "/lighting/keyboard buttons/Delay.html",
         "names": ["delay"]
     },
     {
-        "url": "/Lighting_keyboard_delete.html",
+        "url": "/lighting/keyboard buttons/Delete.html",
         "names": ["delete"]
     },
     {
-        "url": "/Lighting_keyboard_displays.html",
+        "url": "/lighting/keyboard buttons/Displays.html",
         "names": ["displays"]
     },
     {
-        "url": "/Lighting_keyboard_dot.html",
+        "url": "/lighting/keyboard buttons/Dot.html",
         "names": ["dot"]
     },
     {
-        "url": "/Lighting_keyboard_effect.html",
+        "url": "/lighting/keyboard buttons/Effect.html",
         "names": ["effect"]
     },
     {
-        "url": "/Lighting_keyboard_encoders.html",
+        "url": "/lighting/keyboard buttons/Encoders.html",
         "names": ["encoders"]
     },
     {
-        "url": "/Lighting_keyboard_encoderpages.html",
+        "url": "/lighting/keyboard buttons/EncoderPages.html",
         "names": ["encoderdisplay"]
     },
     {
-        "url": "/Lighting_keyboard_enter.html",
+        "url": "/lighting/keyboard buttons/Enter.html",
         "names": ["enter"]
     },
     {
-        "url": "/Lighting_keyboard_escape.html",
+        "url": "/lighting/keyboard buttons/Escape.html",
         "names": ["escape"]
     },
     {
-        "url": "/Lighting_keyboard_expand.html",
+        "url": "/lighting/keyboard buttons/Expand.html",
         "names": ["expand"]
     },
     {
-        "url": "/Lighting_keyboard_faderpage.html",
+        "url": "/lighting/keyboard buttons/FaderPage.html",
         "names": ["fadercontrol", "faderpage"]
     },
     {
-        "url": "/Lighting_keyboard_flexi.html",
+        "url": "/lighting/keyboard buttons/Flexi.html",
         "names": ["flexi"]
     },
     {
-        "url": "/Lighting_keyboard_encoderpages.html",
+        "url": "/lighting/keyboard buttons/encoderpages.html",
         "names": ["focus"]
     },
     {
-        "url": "/Lighting_keyboard_focuspalette.html",
+        "url": "/lighting/keyboard buttons/FocusPalette.html",
         "names": ["focuspalette"]
     },
     {
-        "url": "/Lighting_keyboard_encoderpages.html",
+        "url": "/lighting/keyboard buttons/EncoderPages.html",
         "names": ["form"]
     },
     {
-        "url": "/Lighting_keyboard_format.html",
+        "url": "/lighting/keyboard buttons/Format.html",
         "names": ["format"]
     },
     {
-        "url": "/Lighting_keyboard_full.html",
+        "url": "/lighting/keyboard buttons/Full.html",
         "names": ["full"]
     },
     {
-        "url": "/Lighting_keyboard_go_stopback.html",
+        "url": "/lighting/keyboard buttons/Go_StopBack.html",
         "names": ["go", "stopback"]
     },
     {
-        "url": "/Lighting_keyboard_gotocue.html",
+        "url": "/lighting/keyboard buttons/GoToCue.html",
         "names": ["gotocue"]
     },
     {
-        "url": "/Lighting_keyboard_gotocue.html#go-to-cue-0",
+        "url": "/lighting/keyboard buttons/GoToCue.html#go-to-cue-0",
         "names": ["gotocue0"]
     },
     {
-        "url": "/Lighting_keyboard_group.html",
+        "url": "/lighting/keyboard buttons/Group.html",
         "names": ["group"]    
     },
     {
-        "url": "/Lighting_keyboard_help.html",
+        "url": "/lighting/keyboard buttons/Help.html",
         "names": ["help"]    
     },
     {
-        "url": "/Lighting_keyboard_home.html",
+        "url": "/lighting/keyboard buttons/Home.html",
         "names": ["home"]    
     },
     {
-        "url": "/Lighting_keyboard_encoderpages.html",
+        "url": "/lighting/keyboard buttons/EncoderPages.html",
         "names": ["image"]    
     },
     {
-        "url": "/Lighting_keyboard_encoderpages.html",
+        "url": "/lighting/keyboard buttons/encoderpages.html",
         "names": ["intensity", "custom"]
     },
     {
-        "url": "/Lighting_keyboard_intpalette.html",
+        "url": "/lighting/keyboard buttons/IntPalette.html",
         "names": ["intpalette"]    
     },
     {
-        "url": "/Lighting_keyboard_label_note.html",
+        "url": "/lighting/keyboard buttons/Label_Note.html",
         "names": ["label_note"]    
     },
     {
-        "url": "/Lighting_keyboard_last.html",
+        "url": "/lighting/keyboard buttons/Last.html",
         "names": ["last"]    
     },
     {
-        "url": "/Lighting_keyboard_learn.html",
+        "url": "/lighting/keyboard buttons/Learn.html",
         "names": ["learn"]    
     },
     {
-        "url": "/Lighting_keyboard_live_blind.html",
+        "url": "/lighting/keyboard buttons/Live_Blind.html",
         "names": ["live", "blind"]    
     },
     {
-        "url": "/Lighting_keyboard_load.html",
+        "url": "/lighting/keyboard buttons/Load.html",
         "names": ["load", "master"]    
     },
     {
-        "url": "/Lighting_keyboard_macro.html",
+        "url": "/lighting/keyboard buttons/Macro.html",
         "names": ["macro"]    
     },
     {
-        "url": "/Lighting_keyboard_manualwheel",
+        "url": "/lighting/keyboard buttons/ManualWheel",
         "names": ["manualwheel", "manualwheel1", "manualwheel2"]
     },
     {
-        "url": "/Lighting_keyboard_mark.html",
+        "url": "/lighting/keyboard buttons/Mark.html",
         "names": ["mark"]    
     },
     {
-        "url": "/Lighting_keyboard_minus",
+        "url": "/lighting/keyboard buttons/Minus",
         "names": ["minus"]    
     },
     {
-        "url": "/Lighting_keyboard_softkeys.html",
+        "url": "/lighting/keyboard buttons/Softkeys.html",
         "names": ["moresk"]    
     },
     {
-        "url": "/Lighting_keyboard_next.html",
+        "url": "/lighting/keyboard buttons/Next.html",
         "names": ["next"]    
     },
     {
-        "url": "/Lighting_keyboard_out.html",
+        "url": "/lighting/keyboard buttons/Out.html",
         "names": ["out"]    
     },
     {
-        "url": "/Lighting_keyboard_park.html",
+        "url": "/lighting/keyboard buttons/Park.html",
         "names": ["park"]    
     },
     {
-        "url": "/Lighting_keyboard_part.html",
+        "url": "/lighting/keyboard buttons/Part.html",
         "names": ["part"]    
     },
     {
-        "url": "/Lighting_keyboard_path.html",
+        "url": "/lighting/keyboard buttons/Path.html",
         "names": ["path"]    
     },
     {
-        "url": "/Lighting_keyboard_percentnudge.html",
+        "url": "/lighting/keyboard buttons/PercentNudge.html",
         "names": ["+%", "-%", "pluspercent", "minuspercent"]
     },
     {
-        "url": "/Lighting_keyboard_plus.html",
+        "url": "/lighting/keyboard buttons/Plus.html",
         "names": ["plus"]    
     },
     {
-        "url": "/Lighting_keyboard_power.html",
+        "url": "/lighting/keyboard buttons/Power.html",
         "names": ["power"]    
     },
     {
-        "url": "/Lighting_keyboard_preset.html",
+        "url": "/lighting/keyboard buttons/Preset.html",
         "names": ["preset"]    
     },
     {
-        "url": "/Lighting_keyboard_qonly_track.html",
+        "url": "/lighting/keyboard buttons/QOnly_Track.html",
         "names": ["qonly_track"]    
     },
     {
-        "url": "/Lighting_keyboard_query.html" ,
+        "url": "/lighting/keyboard buttons/query.html" ,
         "names": ["query"]    
     },
     {
-        "url": "/Lighting_keyboard_recallfrom.html",
+        "url": "/lighting/keyboard buttons/RecallFrom.html",
         "names": ["recallfrom"]    
     },
     {
-        "url": "/Lighting_keyboard_record.html",
+        "url": "/lighting/keyboard buttons/Record.html",
         "names": ["record"]    
     },
     {
-        "url": "/Lighting_keyboard_recordonly.html",
+        "url": "/lighting/keyboard buttons/RecordOnly.html",
         "names": ["recordonly"]    
     },
     {
-        "url": "/Lighting_keyboard_remdim.html",
+        "url": "/lighting/keyboard buttons/RemDim.html",
         "names": ["remdim"]    
     },
     {
-        "url": "/Lighting_keyboard_selectlast.html",
+        "url": "/lighting/keyboard buttons/SelectLast.html",
         "names": ["selectlast"]    
     },
     {
-        "url": "/Lighting_keyboard_selectactive.html",
+        "url": "/lighting/keyboard buttons/SelectActive.html",
         "names": ["selectactive"]
     },
     {
-        "url": "Lighting_keyboard_selectmanual.html",
+        "url": "/lighting/keyboard buttons/SelectManual.html",
         "names": ["selectmanual"]
     },
     {
-        "url": "/Lighting_keyboard_shift.html",
+        "url": "/lighting/keyboard buttons/Shift.html",
         "names": ["shift"] 
     },
     {
-        "url": "/Lighting_keyboard_encoderpages.html",
+        "url": "/lighting/keyboard buttons/Encoderpages.html",
         "names": ["shutter"]    
     },
     {
-        "url": "/Lighting_keyboard_slash.html",
+        "url": "/lighting/keyboard buttons/Slash.html",
         "names": ["slash"]  
     },
     {
-        "url": "/Lighting_keyboard_sneak.html",
+        "url": "/lighting/keyboard buttons/Sneak.html",
         "names": ["sneak"]    
     },
     {
-        "url": "/Lighting_keyboard_sub.html",
+        "url": "/lighting/keyboard buttons/Sub.html",
         "names": ["sub"]    
     },
     {
-        "url": "/Lighting_keyboard_tab.html",
+        "url": "/lighting/keyboard buttons/Tab.html",
         "names": ["tab"]    
     },
     {
-        "url": "/Lighting_keyboard_time.html",
+        "url": "/lighting/keyboard buttons/Time.html",
         "names": ["time", "time1", "time2"]    
     },
     {
-        "url": "/Lighting_keyboard_thru.html",
+        "url": "/lighting/keyboard buttons/Thru.html",
         "names": ["thru"]    
     },
     {
-        "url": "/Lighting_keyboard_undo_redo.html",
+        "url": "/lighting/keyboard buttons/Undo_Redo.html",
         "names": ["undo_redo", "undo"]    
     },
     {
-        "url": "/Lighting_keyboard_update.html",
+        "url": "/lighting/keyboard buttons/Update.html",
         "names": ["update"]    
     },
     {
-        "url": "/Lighting_keyboard_numbers.html",
+        "url": "/lighting/keyboard buttons/Numbers.html",
         "names": ["numbers", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     },
     {
-        "url": "/Lighting_keyboard_encoderwheels.html",
+        "url": "/lighting/keyboard buttons/EncoderWheels.html",
         "names": ["encoders", "encoder1", "encoder2", "encoder3", "encoder4"]
     },
     {
-        "url": "/Lighting_keyboard_softkeys.html",
+        "url": "/lighting/keyboard buttons/Softkeys.html",
         "names": ["softkeys", "s1", "s2", "s3", "s4", "s5", "s6"]   
     }, 
     {
-        "url": "/Lighting_keyboard_disambiguation_s1.html",
+        "url": "/lighting/keyboard buttons/Disambiguation_S1.html",
         "names": ["intensity_s1"]
     },
     {
-        "url": "/Lighting_keyboard_disambiguation_s2.html",
+        "url": "/lighting/keyboard buttons/Disambiguation_S2.html",
         "names": ["focus_s2"]
     },
     {
-        "url": "/Lighting_keyboard_disambiguation_s3.html",
+        "url": "/lighting/keyboard buttons/Disambiguation_S3.html",
         "names": ["color_s3"]
     },
     {
-        "url": "/Lighting_keyboard_disambiguation_s4.html",
+        "url": "/lighting/keyboard buttons/Disambiguation_S4.html",
         "names": ["shutter_s4"]
     },
     {
-        "url": "/Lighting_keyboard_disambiguation_s5.html",
+        "url": "/lighting/keyboard buttons/Disambiguation_S5.html",
         "names": ["image_s5"]
     },
     {
-        "url": "/Lighting_keyboard_disambiguation_s6.html",
+        "url": "/lighting/keyboard buttons/Disambiguation_S6.html",
         "names": ["form_s6"]
     }
 ]

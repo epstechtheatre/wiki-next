@@ -1,6 +1,5 @@
 ---
 title: Keyboard Buttons Info
-keywords: [lighting, overview, keyboard, buttons]
 draft: true
 tags: [navigation, lighting]
 customPageType: navigation

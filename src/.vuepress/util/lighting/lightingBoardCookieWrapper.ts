@@ -10,7 +10,7 @@ export function checkIfPreference() {
 export function getSvgPathForPreference() {
     if (!checkIfPreference()) return `${SVG_PATH}/${AvailableLightingBoards[getDefaultOption()]}`
 
-    return `${SVG_PATH}/${AvailableLightingBoards[getPreference()]}`
+    return `${SVG_PATH}/${AvailableLightingBoards[getPreference()!]}`
 }
 
 export function getPreference() {

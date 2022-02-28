@@ -6,7 +6,7 @@
 import UrlAndButtonNameMap from "../json/lighting_svg_button_map.json"; 
 import {getSvgPathForPreference} from "../util/lighting/lightingBoardCookieWrapper"
 import {getSvgShape} from "../util/svg_get_shape";
-//Hardcoded links for shape ids. The id is that if the svg changes, hopefully the shape ideas for buttons will remain consistent so this will inject correctly.
+//Hardcoded links for shape ids. The id is that if the svg changes, hopefully the shape ids for buttons will remain consistent so this will inject correctly.
 //For similar reason, this is why the links aren't directly in the svg (am i being smart?)
 const activeColour = "#990033"
 const returnColour = "#BF003F"
@@ -26,6 +26,10 @@ export default{
             document.getElementById("lighting_key_info_page_svg_directory")?.addEventListener("load", () => {
                 produceLinks();
             })
+        })
+
+        document.getElementById("lighting_key_info_page_svg_directory")?.addEventListener("load", () => {
+            produceLinks();
         })
     }
 }
@@ -50,9 +54,6 @@ function produceLinks() {
         }
     }
 }
-window.addEventListener("load", function() {
-    produceLinks()
-})
 </script>
 
 <style scoped>

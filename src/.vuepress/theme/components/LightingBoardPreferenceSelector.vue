@@ -4,8 +4,10 @@
         mode="out-in">
     <v-alert
         border="left"
-        colored-border
         :type="hasBoardPref ? 'success' : 'warning'"
+        outlined
+        elevation="2"
+        :prominent='hasBoardPref == false'
     >
         <v-dialog
             v-model="dialog"
@@ -15,7 +17,7 @@
         <template v-slot:activator="{on, attrs}">
             <span v-if="hasBoardPref == false">You haven't selected what lighting board you use.
             <br>To see examples using your board, click </span>
-            <span v-else>Your lighting board is currently set as "{{savedPreference}}"
+            <span v-else>Your lighting board is currently set as <code>{{savedPreference}}</code>
             <br>To change your selection, click </span>
             <v-btn
                 v-bind="attrs"

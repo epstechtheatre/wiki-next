@@ -1,7 +1,7 @@
 <template>
   <footer class="page-edit">
     <div
-      v-if="editLink"
+      v-if="editLink && !($page.frontmatter && $page.frontmatter.noedit === true)"
       class="edit-link"
     >
       <a
@@ -31,7 +31,10 @@ export default {
 
   computed: {
     lastUpdated () {
-      return this.$page.lastUpdated
+      if (this.$page.lastUpdated.split(",").length > 1) {
+        return this.$page.lastUpdated.split(",")[0];
+      }
+      return this.$page.lastUpdated;
     },
 
     lastUpdatedText () {

@@ -1,9 +1,11 @@
 <template>
     <main class="page">
         <slot name="top" />
-        <LightingBoardPreferenceSelector class="lighting-board-preference-wrapper"/>
+        <div class="page-header-navbar-spacer"/>
+        <LightingBoardPreferenceSelector v-if="$page.path.startsWith('/lighting')" class="lighting-board-preference-wrapper"/>
+        <Draft class="page-draft-warning" v-if="$page.frontmatter && $page.frontmatter.draft == true"/>
         <Content :key="$page.path" class="theme-default-content"/>
-        <PageTag/>
+        <PageTag v-if="$page.frontmatter && $page.frontmatter.tags && $page.frontmatter.tags.length > 0"/>
         <Authors/>
         <PageEdit />
 
@@ -11,7 +13,6 @@
 
         <slot name="bottom" />
         <Copyright />
-
     </main>
 </template>
 
@@ -20,11 +21,12 @@ import PageEdit from './PageEdit.vue';
 import PageNav from './PageNav.vue';
 import Authors from "./Authors.vue";
 import Copyright from "./Copyright.vue";
-import PageTag from "./PageTag.vue"
-import LightingBoardPreferenceSelector from "./LightingBoardPreferenceSelector.vue"
+import PageTag from "./PageTag.vue";
+import Draft from "./Draft.vue"
+import LightingBoardPreferenceSelector from "./LightingBoardPreferenceSelector.vue";
 
 export default {
-    components: { PageEdit, PageNav, Authors, Copyright, PageTag, LightingBoardPreferenceSelector},
+    components: { PageEdit, PageNav, Authors, Copyright, PageTag, LightingBoardPreferenceSelector, Draft},
     props: ['sidebarItems'],
 
     beforeMount() {
@@ -73,10 +75,13 @@ export default {
     display block
 
 .lighting-board-preference-wrapper
-    @extend $wrapper
-    margin-top: $navbarHeight + 3px
-    margin-bottom: -20px !important
-    margin-left: 2.5rem
-</style>
+    @extend $marginWrapper
+    display: block
 
+.page-draft-warning
+    @extend $marginWrapper
+    display: block
+    
+.page-header-navbar-spacer
+    height: $navbarHeight
 </style>

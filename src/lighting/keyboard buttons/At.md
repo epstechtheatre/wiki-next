@@ -1,9 +1,7 @@
 ---
 title: At
 sidebar: Lighting_sidebar
-# draft: true
-# toc: true
-summary: At is used most commonly to signify that the next number in your command is a lighting intensity
+draft: true
 # keywords: []
 authors: ["Ben MacDonald"]
 last_updated: December 28, 2021
@@ -13,7 +11,7 @@ last_updated: December 28, 2021
 ## Usage
 <LightingKey name="At"/> has two primary usages:
 
-The first is, as stated above, to indicate the next number is a lighting intensity.
+The first is to signify that the next number you type into the command line is a lighting intensity.
 
 The second is used when patching lights to enter the physical address of the fixture.
 <br><br>

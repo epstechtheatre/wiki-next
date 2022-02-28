@@ -20,7 +20,7 @@
 }
 
 .copyright-logo {
-    width: 20vw;
-    max-width: 350px;
+    max-width: 100vw;
+    width: 250px;
 }
 </style>

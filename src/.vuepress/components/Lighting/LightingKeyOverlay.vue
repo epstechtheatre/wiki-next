@@ -39,21 +39,21 @@ export default {
                     sidebarWidth = window.getComputedStyle(sidebarElement)?.transform !== "none" ? 0 : sidebarElement.scrollWidth
                 }
 
-                const smallScreenCorrection = element.scrollWidth >= window.screen.width - 1 - sidebarWidth
+                const smallScreenCorrection = element.scrollWidth >= getScreenWidth() - 1 - sidebarWidth
 
                 if (smallScreenCorrection) {
                     element.style.maxWidth = "100vw";
                     element.addEventListener("transitionend", () => {
-                        element.style.left = `${element.offsetLeft - (element.getBoundingClientRect().right - window.screen.width)}px`;
+                        element.style.left = `${element.offsetLeft - (element.getBoundingClientRect().right - getScreenWidth())}px`;
                     })
                 } else {
-                    if (element.getBoundingClientRect().right > window.screen.width ) {
-                        element.style.left = `${element.offsetLeft - (element.getBoundingClientRect().right - window.screen.width) - EDGE_BUFFER}px`
-                    } 
-
-                    if (element.getBoundingClientRect().left < sidebarWidth) {
-                        element.style.left = `${element.offsetLeft - (element.getBoundingClientRect().left) + EDGE_BUFFER + sidebarWidth}px`
-                    } 
+                    if (element.getBoundingClientRect().right > getScreenWidth() ) {
+                        element.style.left = `${element.offsetLeft - (element.getBoundingClientRect().right - getScreenWidth()) - EDGE_BUFFER}px`
+                    } else {
+                        if (element.getBoundingClientRect().left < sidebarWidth) {
+                            element.style.left = `${element.offsetLeft - (element.getBoundingClientRect().left) + EDGE_BUFFER + sidebarWidth}px`
+                        } 
+                    }
                 }
 
                 drawOnSvg(
@@ -67,6 +67,11 @@ export default {
             })
         })
     }
+}
+
+function getScreenWidth() {
+    //Because for some reason, window.screen.width doesn't work
+    return document.querySelector("body")!.offsetWidth
 }
 function getSimultaneousRoot(keyElement: Element): Element|undefined {
     let output = keyElement.parentElement;

@@ -2,8 +2,21 @@ $wrapper
   // max-width $contentWidth
   margin 0 auto
   padding 2rem 2.5rem
+  padding-top: 1rem
+  padding-bottom: 1rem
   @media (max-width: $MQNarrow)
-    padding 2rem
+    padding-left: 2rem
+    padding-right: 2rem
   @media (max-width: $MQMobileNarrow)
-    padding 1.5rem
+    padding-left: 1.5rem
+    padding-right: 1.5rem
 
+$marginWrapper
+  margin: 1rem 2.5rem 1rem 2.5rem
+  //Top, Right, Bottom, Left
+  @media (max-width: $MQNarrow)
+    margin-left: 2rem
+    margin-right: 2rem
+  @media (max-width: $MQMobileNarrow)
+    margin-left: 1.5rem
+    margin-right: 1.5rem

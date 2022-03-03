@@ -1,9 +1,9 @@
 <template>
-    <v-btn v-on:click="modeChange">
-        <v-icon v-if="themeMode=='light'" center>mdi-weather-sunny</v-icon>
+    <v-btn v-on:click="modeChange" aria-label="Toggle Colour Mode">
+        <v-icon v-if="themeMode=='light'" center aria->mdi-weather-sunny</v-icon>
         <v-icon v-else-if="themeMode=='dark'" center>mdi-weather-night</v-icon>
         <v-icon v-else center>mdi-laptop</v-icon>
-        {{themeMode}}
+        <span class="colour-theme-name">{{themeMode}}</span>
     </v-btn>
 </template>
 
@@ -62,9 +62,6 @@ export default {
                 htmlEl?.classList.remove('dark', value);
             }
 
-            const systemDarkMode = MediaQuery.matches;
-            console.log(systemDarkMode)
-            console.log(value)
             localStorage.setItem('site-color-theme', this.themeMode);
         }
     },
@@ -101,6 +98,8 @@ export default {
 
 </script>
 
-<style>
-
+<style lang="stylus" scoped>
+@media (max-width: $MQNarrow)
+    .colour-theme-name
+        display: none
 </style>

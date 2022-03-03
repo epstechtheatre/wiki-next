@@ -20,20 +20,22 @@
       >{{ $siteTitle }}</span>
     </RouterLink>
 
-    <div
-      class="links"
-      :style="linksWrapMaxWidth ? {
-        'max-width': linksWrapMaxWidth + 'px'
-      } : {}"
-    >
-      <AlgoliaSearchBox
-        v-if="isAlgoliaSearch"
-        :options="algolia"
-      />
-      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />
-      <NavLinks class="can-hide" />
+    <div class="nav-actions">
+      <ColourModeToggle class="colour-mode-toggle" />
+      <div
+        class="links"
+        :style="linksWrapMaxWidth ? {
+          'max-width': linksWrapMaxWidth + 'px'
+        } : {}"
+      >
+        <AlgoliaSearchBox
+          v-if="isAlgoliaSearch"
+          :options="algolia"
+        />
+        <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />
+        <NavLinks class="can-hide" />
+      </div>
     </div>
-    <ColourModeToggle />
   </header>
 </template>
 
@@ -114,19 +116,24 @@ $navbar-horizontal-padding = 1.5rem
     font-weight 600
     color $textColor
     position relative
-  .links
-    padding-left 1.5rem
-    box-sizing border-box
-    background-color white
-    white-space nowrap
-    font-size 0.9rem
+  .nav-actions
+    display: flex
     position absolute
     right $navbar-horizontal-padding
     top $navbar-vertical-padding
-    display flex
-    .search-box
-      flex: 0 0 auto
-      vertical-align top
+    .links
+      padding-left 1.5rem
+      box-sizing border-box
+      background-color white
+      white-space nowrap
+      font-size 0.9rem
+      display flex
+      .search-box
+        flex: 0 0 auto
+        vertical-align top
+
+    .colour-mode-toggle
+      display: inline
 
 @media (max-width: $MQMobile)
   .navbar

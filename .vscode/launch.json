@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "name": "vuejs: firefox",
+            "url": "http://localhost:6060",
+            "webRoot": "${workspaceFolder}/src",
+            "pathMappings": [{"url": "webpack:///src/", "path": "${webRoot}/"}]
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "vuejs: chrome",
+            "url": "http://localhost:6060",
+            "webRoot": "${workspaceFolder}/src",
+            "breakOnLoad": true,
+            "sourceMapPathOverrides": {"webpack:///src/*": "${webRoot}/"}
+        }
+    ]
+}

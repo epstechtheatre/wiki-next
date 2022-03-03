@@ -1,70 +1,72 @@
 <template>
     <Transition
         name="fade"
-        mode="out-in">
-    <v-alert
-        border="left"
-        :type="hasBoardPref ? 'success' : 'warning'"
-        outlined
-        elevation="2"
-        :prominent='hasBoardPref == false'
+        mode="out-in"
     >
-        <v-dialog
-            v-model="dialog"
-            max-width="600"
+        <v-alert
+            border="left"
+            :type="hasBoardPref ? 'success' : 'warning'"
+            outlined
+            elevation="2"
+            :prominent='hasBoardPref == false'
         >
-
-        <template v-slot:activator="{on, attrs}">
-            <span v-if="hasBoardPref == false">You haven't selected what lighting board you use.
-            <br>To see examples using your board, click </span>
-            <span v-else>Your lighting board is currently set as <code>{{savedPreference}}</code>
-            <br>To change your selection, click </span>
-            <v-btn
-                v-bind="attrs"
-                v-on="on"
+            <v-dialog
+                v-model="dialog"
+                max-width="600"
             >
-            Here
-            </v-btn>
-        </template>
-        <v-card>
-            <v-card-title class="text-h5 grey lighten-2">
-            Lighting Board Preference
-            </v-card-title>
 
-            <v-card-text>
-                Please select your lighting board from the dropdown below
-                <v-select
-                    label="Please select..."
-                    solo
-                    :items="items"
-                    v-model="model.currentPreference"
-                ></v-select>
-                <small>Your preference will be stored as a cookie in your browser for 30 days.
-                    <br>To delete this cookie, select "{{DELETE_OPTION_TEXT}}" from the dropdown</small>
-            </v-card-text>
+            <template v-slot:activator="{on, attrs}">
+                <span v-if="hasBoardPref == false">You haven't selected what lighting board you use.
+                <br>To see examples using your board, click </span>
+                <span v-else>Your lighting board is currently set as <code>{{savedPreference}}</code>
+                <br>To change your selection, click </span>
+                <v-btn
+                    v-bind="attrs"
+                    v-on="on"
+                >
+                Here
+                </v-btn>
+            </template>
+            <v-card>
+                <v-card-title class="text-h5 grey lighten-2">
+                Lighting Board Preference
+                </v-card-title>
 
-            <v-divider></v-divider>
+                <v-card-text>
+                    Please select your lighting board from the dropdown below
+                    <v-select
+                        label="Please select..."
+                        solo
+                        :items="items"
+                        v-model="model.currentPreference"
+                        :menu-props="{transition: 'slide-y-transition', 'offset-y': true}"
+                    ></v-select>
+                    <small>Your preference will be stored as a cookie in your browser for 30 days.
+                        <br>To delete this cookie, select "{{DELETE_OPTION_TEXT}}" from the dropdown</small>
+                </v-card-text>
 
-            <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn
-                color="primary"
-                text
-                @click="dialog = false"
-            >
-                Close
-            </v-btn>
-            <v-btn
-                color="primary"
-                text
-                @click="onPreferenceSave"
-            >
-                Save
-            </v-btn>
-            </v-card-actions>
-        </v-card>
-        </v-dialog>
-    </v-alert>
+                <v-divider></v-divider>
+
+                <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                    color="primary"
+                    text
+                    @click="dialog = false"
+                >
+                    Close
+                </v-btn>
+                <v-btn
+                    color="primary"
+                    text
+                    @click="onPreferenceSave"
+                >
+                    Save
+                </v-btn>
+                </v-card-actions>
+            </v-card>
+            </v-dialog>
+        </v-alert>
     </Transition>
 </template>
 

@@ -19,7 +19,6 @@ export default {
 
     methods: {
         getUserGraphicPreference: () => {
-            //TODO, return cookie result instead
             return getSvgPathForPreference();
         }
     },
@@ -31,7 +30,7 @@ export default {
         const elements = document.querySelectorAll(".lighting_key_svg_graphic") as NodeListOf<HTMLElement>;
         elements.forEach(element => {
             element.addEventListener("load", () => {
-                const EDGE_BUFFER = 0;
+                let EDGE_BUFFER = 5;
 
                 let sidebarWidth = 0;
                 const sidebarElement = document.querySelector("aside.sidebar");
@@ -42,6 +41,7 @@ export default {
                 const smallScreenCorrection = element.scrollWidth >= getScreenWidth() - 1 - sidebarWidth
 
                 if (smallScreenCorrection) {
+                    EDGE_BUFFER = 0; //Otherwise the site changes width on super small screens
                     element.style.maxWidth = "100vw";
                     element.addEventListener("transitionend", () => {
                         element.style.left = `${element.offsetLeft - (element.getBoundingClientRect().right - getScreenWidth())}px`;

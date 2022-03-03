@@ -2,7 +2,7 @@
     <main class="page">
         <slot name="top" />
         <div class="page-header-navbar-spacer"/>
-        <LightingBoardPreferenceSelector v-if="$page.path.startsWith('/lighting')" class="lighting-board-preference-wrapper"/>
+        <ClientOnly><LightingBoardPreferenceSelector v-if="$page.path.startsWith('/lighting')" class="lighting-board-preference-wrapper"/></ClientOnly>
         <Draft class="page-draft-warning" v-if="$page.frontmatter && $page.frontmatter.draft == true"/>
         <Content :key="$page.path" class="theme-default-content"/>
         <PageTag v-if="$page.frontmatter && $page.frontmatter.tags && $page.frontmatter.tags.length > 0"/>

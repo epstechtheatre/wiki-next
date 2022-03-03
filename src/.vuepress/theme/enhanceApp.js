@@ -2,6 +2,7 @@ import '../../../node_modules/material-design-icons-iconfont/dist/material-desig
 import "../../../node_modules/vuetify/dist/vuetify.css";
 import '../../../node_modules/@mdi/font/css/materialdesignicons.css';
 import Vuetify from 'vuetify';
+import VueDarkMode from "@vue-a11y/dark-mode"
 
 export default ({
     Vue, // the version of Vue being used in the VuePress app
@@ -16,4 +17,6 @@ export default ({
             iconfont: 'mdi'
         }
     });
+
+    Vue.use(VueDarkMode);
 }

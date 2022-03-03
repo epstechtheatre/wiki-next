@@ -1,14 +1,12 @@
 ---
 title: At
-sidebar: Lighting_sidebar
 draft: true
-# keywords: []
 authors: ["Ben MacDonald"]
-last_updated: December 28, 2021
 # tags: []
 ---
 
 ## Usage
+
 <LightingKey name="At"/> has two primary usages:
 
 The first is to signify that the next number you type into the command line is a lighting intensity.
@@ -69,4 +67,5 @@ The example resets all properties in the `Color` Category.
 :::::
 
 ## On Keyboard
+
 <LightingKey name="At"/> is mapped to `A` on a QWERTY keyboard

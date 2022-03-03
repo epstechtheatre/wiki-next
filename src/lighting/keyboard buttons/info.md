@@ -19,4 +19,5 @@ Remember that at any time, you can hold down <LightingKey name="Help"/> and clic
 (click help again to close the help window).
 
 ## Visual Directory
-<LightingBoardSvgDirectory/>
+
+<ClientOnly><LightingBoardSvgDirectory/></ClientOnly>

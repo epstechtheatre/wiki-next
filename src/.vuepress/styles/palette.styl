@@ -4,7 +4,63 @@
  * ref：https://v1.vuepress.vuejs.org/zh/config/#palette-styl
  */
 
-$accentColor = #3eaf7c
-$textColor = #2c3e50
-$borderColor = #eaecef
-$codeBgColor = #282c34
+// $accentColor = #3eaf7c
+// $textColor = #2c3e50
+// $borderColor = #eaecef
+// $codeBgColor = #282c34
+
+:root{
+    //Colour Themes
+    --lightAccentColour: #3eaf7c;
+    --lightTextColour: #2c3e50;
+    --lightBackgroundColour: #fff;
+    --lightBorderColour: #eaecef;
+
+    --lightSidebarColour: #fff;
+    --lightNavbarColour: #fff;
+    
+    --darkAccentColour: #3eaf7c;
+    --darkTextColour: #ddd8ca;
+    --darkBackgroundColour: #232b32;
+    --darkBorderColour: #333;
+
+    --darkSidebarColour: var(--darkBackgroundColour);
+    --darkNavbarColour: var(--darkBackgroundColour);
+    
+    --codeBgColour: #282c34;
+    
+    // layout
+    --navbarHeight: 3.6rem;
+    --sidebarWidth: 20rem;
+    --contentWidth: 740px;
+    --homePageWidth: 960px;
+    
+    // responsive breakpoints
+    --MQNarrow: 959px;
+    --MQMobile: 719px;
+    --MQMobileNarrow: 419px;
+
+    //Base Colours
+    // --accentColour: var(--lightAccentColour);
+    // --textColour: var(--lightTextColour);
+    // --backgroundColour: var(--lightBackgroundColour);
+    // --borderColour: var(--lightBorderColour);
+
+}
+:root {
+    --accentColour: var(--lightAccentColour);
+    --textColour: var(--lightTextColour);
+    --backgroundColour: var(--lightBackgroundColour);
+    --borderColour: var(--lightBorderColour);
+    --sidebarColour: var(--lightSidebarColour);
+    --navbarColour: var(--lightNavbarColour);
+}
+
+:root.dark {
+    --accentColour: var(--darkAccentColour);
+    --textColour: var(--darkTextColour);
+    --backgroundColour: var(--darkBackgroundColour);
+    --borderColour: var(--darkBorderColour);
+    --sidebarColour: var(--darkSidebarColour);
+    --navbarColour: var(--darkNavbarColour);
+}

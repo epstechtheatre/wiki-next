@@ -1,51 +1,51 @@
 <template>
   <v-app>
-  <div
-    class="theme-container"
-    :class="pageClasses"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd"
-  >
-    <Navbar
-      v-if="shouldShowNavbar"
-      @toggle-sidebar="toggleSidebar"
-    />
-
     <div
-      class="sidebar-mask"
-      @click="toggleSidebar(false)"
-    />
-
-    <Sidebar
-      :items="sidebarItems"
-      @toggle-sidebar="toggleSidebar"
+      class="theme-container"
+      :class="pageClasses"
+      @touchstart="onTouchStart"
+      @touchend="onTouchEnd"
     >
-      <template #top>
-        <slot name="sidebar-top" />
-      </template>
-      <template #bottom>
-        <slot name="sidebar-bottom" />
-      </template>
-    </Sidebar>
+      <Navbar
+        v-if="shouldShowNavbar"
+        @toggle-sidebar="toggleSidebar"
+      />
 
-    <Transition 
-        name="fade-page"
-        mode="out-in">
-      <Home :key="$page.path" v-if="$page.frontmatter.home" />
-      <Page
-        v-else
-        :sidebar-items="sidebarItems"
-        :key="$page.path"
+      <div
+        class="sidebar-mask"
+        @click="toggleSidebar(false)"
+      />
+
+      <Sidebar
+        :items="sidebarItems"
+        @toggle-sidebar="toggleSidebar"
       >
         <template #top>
-          <slot name="page-top" />
+          <slot name="sidebar-top" />
         </template>
         <template #bottom>
-          <slot name="page-bottom" />
+          <slot name="sidebar-bottom" />
         </template>
-      </Page>
-    </Transition>
-  </div>
+      </Sidebar>
+
+      <Transition 
+          name="fade-page"
+          mode="out-in">
+        <Home :key="$page.path" v-if="$page.frontmatter.home" />
+        <Page
+          v-else
+          :sidebar-items="sidebarItems"
+          :key="$page.path"
+        >
+          <template #top>
+            <slot name="page-top" />
+          </template>
+          <template #bottom>
+            <slot name="page-bottom" />
+          </template>
+        </Page>
+      </Transition>
+    </div>
   </v-app>
 </template>
 

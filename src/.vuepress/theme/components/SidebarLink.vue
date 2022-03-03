@@ -110,18 +110,18 @@ a.sidebar-link
   font-size 1em
   font-weight 400
   display inline-block
-  color $textColor
+  color: var(--textColour)
   border-left 0.25rem solid transparent
   padding 0.35rem 1rem 0.35rem 1.25rem
   line-height 1.4
   width: 100%
   box-sizing: border-box
   &:hover
-    color $accentColor
+    color $accentColour
   &.active
     font-weight 600
-    color $accentColor
-    border-left-color $accentColor
+    color: var(--accentColour)
+    border-left-color: var(--accentColour)
   .sidebar-group &
     padding-left 2rem
   .sidebar-sub-headers &

@@ -20,7 +20,6 @@
       >{{ $siteTitle }}</span>
     </RouterLink>
 
-    <ColourModeToggle/>
     <div
       class="links"
       :style="linksWrapMaxWidth ? {
@@ -34,6 +33,7 @@
       <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />
       <NavLinks class="can-hide" />
     </div>
+    <ColourModeToggle />
   </header>
 </template>
 

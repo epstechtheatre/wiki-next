@@ -28,7 +28,7 @@
                 </v-btn>
             </template>
             <v-card>
-                <v-card-title class="text-h5 grey lighten-2">
+                <v-card-title class="text-h5">
                 Lighting Board Preference
                 </v-card-title>
 

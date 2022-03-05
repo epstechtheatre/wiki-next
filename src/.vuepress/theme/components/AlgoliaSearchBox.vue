@@ -83,15 +83,15 @@ export default {
   .algolia-autocomplete
     line-height normal
     .ds-dropdown-menu
-      background-color #fff //FIXME
-      border 1px solid #999 //FIXME
+      background-color var(--backgroundColour) //FIXME
+      border 1px solid var(--shade-i-1) //FIXME
       border-radius 4px
       font-size 16px
       margin 6px 0 0
       padding 4px
       text-align left
       &:before
-        border-color #999 //FIXME
+        border-color var(--shade-i-1) //FIXME
       [class*=ds-dataset-]
         border none
         padding 0
@@ -100,7 +100,7 @@ export default {
       .ds-suggestion
         border-bottom 1px solid var(--borderColor)
     .algolia-docsearch-suggestion--highlight
-      color #2c815b //FIXME
+      color var(--accentColour) //FIXME
     .algolia-docsearch-suggestion
       border-color var(--borderColor)
       padding 0
@@ -108,7 +108,7 @@ export default {
         padding 5px 10px
         margin-top 0
         background var(--accentColor)
-        color #fff //FIXME
+        color var(--backgroundColour) //FIXME
         font-weight 600
         .algolia-docsearch-suggestion--highlight
           background rgba(255, 255, 255, 0.6)
@@ -122,15 +122,15 @@ export default {
         vertical-align top
         padding 5px 7px 5px 5px
         border-color var(--borderColor)
-        background #f1f3f5 //FIXME
+        background var(--shade-4) //FIXME
         &:after
           display none
       .algolia-docsearch-suggestion--subcategory-column-text
-        color #555 //FIXME
+        color var(--shade-i-3) //FIXME
     .algolia-docsearch-footer
       border-color var(--borderColor)
     .ds-cursor .algolia-docsearch-suggestion--content
-      background-color #e7edf3 !important //FIXME
+      background-color var(--shade-3) !important //FIXME
       color $textColor
 
 @media (min-width: $MQMobile)
@@ -159,7 +159,7 @@ export default {
       padding 5px 7px 5px 5px !important
     .algolia-docsearch-suggestion--subcategory-column
       padding 0 !important
-      background white !important //FIXME
+      background var(--backgroundColour) !important //FIXME
     .algolia-docsearch-suggestion--subcategory-column-text:after
       content " > "
       font-size 10px

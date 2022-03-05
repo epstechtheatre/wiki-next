@@ -1,7 +1,8 @@
 <template>
-    <div 
+    <v-card 
         class="lighting_command_block"
         :class="{ 'inline': inline == 'true' }"
+        elevation="2"
     >
         <div class="lighting_command">
             <span v-for="item in getIndexedCommandArray(elementCommand)" :key='item[0]'>
@@ -29,7 +30,7 @@
             </div>
         </div>
         <pre class="hide"><slot></slot></pre>
-    </div>
+    </v-card>
 </template>
 
 
@@ -103,7 +104,7 @@ export default {
 </script>
 
 <style>
-    .lighting_command_block {
+    /* .lighting_command_block {
         z-index: 2;
         display: block;
         border-radius: 5px;
@@ -111,7 +112,7 @@ export default {
         border-width: 1px;
         padding: 15px;
         background-color: #f3f5f7;
-    }
+    } */
 
     .lighting_command {
         user-select: contain;

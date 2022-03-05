@@ -9,26 +9,9 @@
 // $borderColor = #eaecef
 // $codeBgColor = #282c34
 
-:root{
-    //Colour Themes
-    --lightAccentColour: #3eaf7c;
-    --lightTextColour: #2c3e50;
-    --lightBackgroundColour: #fff;
-    --lightBorderColour: #eaecef;
+@import "./colour-vars"
 
-    --lightSidebarColour: #fff;
-    --lightNavbarColour: #fff;
-    
-    --darkAccentColour: #3eaf7c;
-    --darkTextColour: #ddd8ca;
-    --darkBackgroundColour: #232b32;
-    --darkBorderColour: #333;
-
-    --darkSidebarColour: var(--darkBackgroundColour);
-    --darkNavbarColour: var(--darkBackgroundColour);
-    
-    --codeBgColour: #282c34;
-    
+:root{   
     // layout
     --navbarHeight: 3.6rem;
     --sidebarWidth: 20rem;
@@ -40,13 +23,26 @@
     --MQMobile: 719px;
     --MQMobileNarrow: 419px;
 
-    //Base Colours
-    // --accentColour: var(--lightAccentColour);
-    // --textColour: var(--lightTextColour);
-    // --backgroundColour: var(--lightBackgroundColour);
-    // --borderColour: var(--lightBorderColour);
+    //Colour Themes (to override)
+    --lightAccentColour: #3eaf7c;
+    --lightTextColour: #2c3e50;
+    --lightBackgroundColour: $white;
+    --lightBorderColour: #eaecef;
 
-}
+    --lightSidebarColour: $white;
+    --lightNavbarColour: $white;
+    
+    --darkAccentColour: #3eaf7c;
+    --darkTextColour: #dcddde;
+    --darkBackgroundColour: #232b32;
+    --darkBorderColour: #333;
+
+    --darkSidebarColour: var(--darkBackgroundColour);
+    --darkNavbarColour: var(--darkBackgroundColour);
+    
+    --codeBgColour: #282c34;
+    
+} //Non-dark theme
 :root {
     --accentColour: var(--lightAccentColour);
     --textColour: var(--lightTextColour);
@@ -54,6 +50,19 @@
     --borderColour: var(--lightBorderColour);
     --sidebarColour: var(--lightSidebarColour);
     --navbarColour: var(--lightNavbarColour);
+
+    --shade: $white
+    --shade-1: $grey-lighten-1
+    --shade-2: $grey-lighten-2
+    --shade-3: $grey-lighten-3
+    --shade-4: $grey-lighten-4
+    --shade-5: $grey-lighten-5
+
+    --shade-i-1: $grey
+    --shade-i-2: $grey-darken-1
+    --shade-i-3: $grey-darken-2
+    --shade-i-4: $grey-darken-3
+    --shade-i-5: $grey-darken-4
 }
 
 :root.dark {
@@ -63,4 +72,17 @@
     --borderColour: var(--darkBorderColour);
     --sidebarColour: var(--darkSidebarColour);
     --navbarColour: var(--darkNavbarColour);
+
+    --shade: $black
+    --shade-1: $grey
+    --shade-2: $grey-darken-1
+    --shade-3: $grey-darken-2
+    --shade-4: $grey-darken-3
+    --shade-5: $grey-darken-4
+
+    --shade-i-1: $grey-lighten-1
+    --shade-i-2: $grey-lighten-2
+    --shade-i-3: $grey-lighten-3
+    --shade-i-4: $grey-lighten-4
+    --shade-i-5: $grey-lighten-5
 }

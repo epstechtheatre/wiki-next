@@ -144,7 +144,7 @@ export default {
       color lighten($textColor, 25%) //FIXME Workaround for var in lighten
     .time
       font-weight 400
-      color #767676 //FIXME
+      color var(--shade-i-2) //FIXME
 
 @media (max-width: $MQMobile)
   .page-edit

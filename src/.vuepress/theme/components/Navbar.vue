@@ -114,7 +114,7 @@ $navbar-horizontal-padding = 1.5rem
   .site-name
     font-size 1.3rem
     font-weight 600
-    color $textColor
+    color var(--textColour)
     position relative
   .nav-actions
     display: flex
@@ -124,7 +124,7 @@ $navbar-horizontal-padding = 1.5rem
     .links
       padding-left 1.5rem
       box-sizing border-box
-      background-color white
+      background-color var(--backgroundColour)
       white-space nowrap
       font-size 0.9rem
       display flex

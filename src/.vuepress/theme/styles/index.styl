@@ -15,11 +15,12 @@ body
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   font-size 16px
-  color var(--textColor)
+  color var(--textColour)
 
 #app {
   transition: color 0.3s cubic-bezier(0.25, 0.8, 0.5, 1)
   background-color: var(--backgroundColour)
+  color: var(--textColour)
 }
 
 .page
@@ -34,7 +35,7 @@ body
   height $navbarHeight
   background-color: var(--navbarColour)
   box-sizing border-box
-  border-bottom 1px solid var(--borderColor)
+  border-bottom 1px solid var(--borderColour)
 
 .sidebar-mask
   position fixed
@@ -93,16 +94,16 @@ p a code
   color $accentColor
 
 kbd
-  background #eee //FIXME
-  border solid 0.15rem #ddd //FIXME
-  border-bottom solid 0.25rem #ddd //FIXME
+  background var(--shade-3) //FIXME
+  border solid 0.15rem var(--shade-2) //FIXME
+  border-bottom solid 0.25rem var(--shade-2) //FIXME
   border-radius 0.15rem
   padding 0 0.15em
 
 blockquote
   font-size 1rem
-  color #999; //FIXME
-  border-left .2rem solid #dfe2e5 //FIXME
+  color var(--shade-2); //FIXME
+  border-left .2rem solid var(--shade-2) //FIXME
   margin 1rem 0
   padding .25rem 0 .25rem 1rem
 
@@ -141,7 +142,7 @@ h1
 h2
   font-size 1.65rem
   padding-bottom .3rem
-  border-bottom 1px solid var(--borderColor)
+  border-bottom 1px solid var(--borderColour)
 
 h3
   font-size 1.35rem
@@ -166,7 +167,7 @@ p, ul, ol
 
 hr
   border 0
-  border-top 1px solid var(--borderColor)
+  border-top 1px solid var(--borderColour)
 
 table
   border-collapse collapse
@@ -175,13 +176,13 @@ table
   overflow-x: auto
 
 tr
-  border-top 1px solid #dfe2e5 //FIXME
+  border-top 1px solid var(--shade-2) //FIXME
 
   &:nth-child(2n)
-    background-color #f6f8fa //FIXME
+    background-color var(--shade-4) //FIXME
 
 th, td
-  border 1px solid #dfe2e5 //FIXME
+  border 1px solid var(--shade-2) //FIXME
   padding .6em 1em
 
 .theme-container

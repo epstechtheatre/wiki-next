@@ -1,13 +1,15 @@
 <template>
-    <div 
+    <v-card 
         class="lighting_command_simultaneous_group lighting_command_component"
         :class="{inline: inline=='true'}"
+        elevation="2"
+        outlined
     >
         <span v-for="item in keys" :key="item[0]">
             <Lighting-Key :name="item[1]" :inline="inline"/>
             <Lighting-Key-Separator v-if="item[0] < keys.length - 1" :isSimultaneous="true" :asWordMode='asWordMode'/>
         </span>
-    </div>
+    </v-card>
 </template>
 
 <script lang="ts">
@@ -49,7 +51,6 @@ export default {
         border-style: solid;
         border-width: 1px;
         padding: 4px;
-        background-color: #e8eaec;
 
         display: flex;
         justify-items: center;

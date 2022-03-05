@@ -145,7 +145,7 @@ export default {
     background transparent
     border none
     font-weight 500
-    color $textColor
+    color var(--textColor)
     &:hover
       border-color transparent
     .arrow
@@ -158,14 +158,14 @@ export default {
     font-weight 600
     font-size inherit
       &:hover
-        color $accentColour
+        color var(--accentColour)
   .nav-dropdown
     .dropdown-item
       color inherit
       line-height 1.7rem
       h4
         margin 0.45rem 0 0
-        border-top 1px solid #eee //FIXME
+        border-top 1px solid var(--shade-3) //FIXME
         padding 1rem 1.5rem 0.45rem 1.25rem
       .dropdown-subitem-wrapper
         padding 0
@@ -241,10 +241,10 @@ export default {
       position absolute
       top 100%
       right 0
-      background-color #fff //FIXME
+      background-color var(--backgroundColour) //FIXME
       padding 0.6rem 0
-      border 1px solid #ddd //FIXME
-      border-bottom-color #ccc //FIXME
+      border 1px solid var(--shade-2) //FIXME
+      border-bottom-color var(--shade-1) //FIXME
       text-align left
       border-radius 0.25rem
       white-space nowrap

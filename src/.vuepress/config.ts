@@ -41,7 +41,7 @@ export default {
       *
       * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
       */
-    // theme: "./theme/index.ts",
+    theme: "./theme/index.ts",
     themeConfig: {
         repo: 'epstechtheatre/wiki-next',
         editLinks: true,

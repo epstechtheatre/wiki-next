@@ -21,7 +21,7 @@
     </RouterLink>
 
     <div class="nav-actions">
-      <!-- <ClientOnly><ColourModeToggle class="colour-mode-toggle" /></ClientOnly> -->
+      <ClientOnly><ColourModeToggle class="colour-mode-toggle" /></ClientOnly>
       <div
         class="links"
         :style="linksWrapMaxWidth ? {
@@ -95,6 +95,7 @@ function css (el, property) {
   // null means not to return pseudo styles
   return win.getComputedStyle(el, null)[property]
 }
+
 </script>
 
 <style lang="stylus">

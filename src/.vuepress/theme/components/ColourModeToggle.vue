@@ -11,8 +11,6 @@
 //@ts-nocheck
 //Some parts adapted from https://github.com/discordjs/guide/blob/main/guide/.vuepress/theme/composables/useDarkMode.ts
 
-const MediaQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')
-
 export default {
     data() {
         return {
@@ -67,6 +65,8 @@ export default {
     },
 
     mounted(){
+        const MediaQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')
+
         //Check if saved value is for dark mode
 		const savedTheme = localStorage.getItem('site-color-theme');
         switch(savedTheme) {

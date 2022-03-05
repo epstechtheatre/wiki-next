@@ -21,7 +21,7 @@
     </RouterLink>
 
     <div class="nav-actions">
-      <ColourModeToggle class="colour-mode-toggle" />
+      <!-- <ClientOnly><ColourModeToggle class="colour-mode-toggle" /></ClientOnly> -->
       <div
         class="links"
         :style="linksWrapMaxWidth ? {

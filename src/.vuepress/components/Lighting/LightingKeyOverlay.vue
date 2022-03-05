@@ -233,9 +233,9 @@ function getSvgShape(element: any): any {
 
     pointer-events: none;
     max-width: 450px;
-    background-color: #f5f5f5d0;
+    background-color: var(--backgroundColour);
     border-radius: 15px;
-    border: 1px ridge #BEBEBE;
+    border: 1px ridge var(--shade-1);
     width: max-content;
     height: max-content;
     padding: 15px;

@@ -73,11 +73,7 @@ export default {
         }
     },
 
-    components: {
-        LightingKey: LightingKey,
-        LightingKeySeparator: LightingKeySeparator,
-        LightingKeySimultaneousGroup: LightingKeySimultaneousGroup
-    },
+    components: { LightingKey, LightingKeySeparator, LightingKeySimultaneousGroup },
 
     computed: {
         elementCommand: function (): string {

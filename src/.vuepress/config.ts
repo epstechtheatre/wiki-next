@@ -76,7 +76,7 @@ export default {
         "redirect",
         "@vuepress/plugin-container",
         ["@vuepress/plugin-search", {searchMaxSuggestions: 10}],
-        // "@mr-hope/vuepress-plugin-sitemap",
+        ["vuepress-plugin-sitemap", {hostname: "http://localhost:8080",exclude: ["/404.html", "/tags.html"]}],
         getLightingCommandContainerConfig(),
         getCollapsibleConfig(),
         getCollapsibleItemConfig()

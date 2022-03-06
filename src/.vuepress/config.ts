@@ -56,12 +56,12 @@ export default {
             {
             text: 'Guides',
             items: [
-              {text: "Lighting", link: "/lighting/"}
+                {text: "Lighting", link: "/lighting/"}
             ]
             }
         ],
         sidebar: {
-          "/lighting/": getSideBar("lighting", "Lighting")
+            "/lighting/": getSideBar("lighting", "Lighting")
         }
     },
 

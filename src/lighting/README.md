@@ -1,6 +1,6 @@
 ---
-tags: [test, test2]
-authors: [test, test2]
+tags: [test, west2]
+authors: [test, west2]
 ---
 # Introduction
 

@@ -1,8 +1,8 @@
 <template>
     <v-btn v-on:click="modeChange" aria-label="Toggle Colour Mode">
-        <v-icon v-if="themeMode=='light'" center aria->mdi-weather-sunny</v-icon>
+        <v-icon v-if="themeMode=='light'" center aria->mdi-white-balance-sunny</v-icon>
         <v-icon v-else-if="themeMode=='dark'" center>mdi-weather-night</v-icon>
-        <v-icon v-else center>mdi-laptop</v-icon>
+        <v-icon v-else center>mdi-monitor</v-icon>
         <span class="colour-theme-name">{{themeMode}}</span>
     </v-btn>
 </template>

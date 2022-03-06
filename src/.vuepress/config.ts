@@ -11,7 +11,7 @@ export default {
     /**
       * Ref：https://v1.vuepress.vuejs.org/config/#description
       */
-    description: "testing",
+    description: "Wiki for Students learning about the world of Technical Theatre.",
 
     /**
       * Extra tags to be injected to the page HTML `<head>`
@@ -19,15 +19,16 @@ export default {
       * ref：https://v1.vuepress.vuejs.org/config/#head
       */
     head: [
-        ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+        ['meta', { name: 'theme-color', content: '#e10011' }],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-        ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
-        ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+        ['link', { rel: 'apple-touch-icon', href: '/icons/touch/apple-touch-icon-152x152.png' }],
+        ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-icon-mask.svg', color: '#e10011' }],
 
         ['link', { rel: 'stylesheet', href: `https://fonts.googleapis.com/css?family=Material+Icons` }],
 
-        ['link', { rel: 'icon', href: '/logo.png' }],
+        ['link', { rel: 'icon', href: '/images/lancer_cropped.png', type: 'image/png' }],
+        ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg-xml' }],
         ['link', { rel: 'icon', href: 'favicon.ico', type: 'image/x-icon' }],
         ['link', { rel: 'manifest', href: '/manifest.json' }],
 
@@ -44,6 +45,7 @@ export default {
     theme: "./theme/index.ts",
     themeConfig: {
         repo: 'epstechtheatre/wiki-next',
+        logo: "/images/svg/wiki_logo.svg",
         editLinks: true,
         docsDir: 'src',
         editLinkText: '',

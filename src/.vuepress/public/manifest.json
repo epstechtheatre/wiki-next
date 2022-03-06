@@ -8,39 +8,44 @@
     "description": "Wiki for Students learning about the world of Technical Theatre.",
     "icons": [
         {
-            "src": "images/favicon.webp",
+            "src": "image/favicon.webp",
             "sizes": "48x48",
             "type": "image/webp"
         },
         {
-            "src": "images/touch/apple-touch-icon-152x152.png",
+            "src": "icons/touch/apple-touch-icon-152x152.png",
             "sizes": "152x152",
-            "type": "images/png"
+            "type": "image/png"
         },
         {
-            "src": "images/touch/icon48.png",
+            "src": "icons/msapplication-icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/touch/icon48.png",
             "sizes": "48x48",
-            "type": "images/png"
+            "type": "image/png"
         },
         {
-            "src": "images/touch/icon72.png",
+            "src": "icons/touch/icon72.png",
             "sizes": "72x72",
-            "type": "images/png"
+            "type": "image/png"
         },
         {
-            "src": "images/touch/icon96.png",
+            "src": "icons/touch/icon96.png",
             "sizes": "96x96",
-            "type": "images/png"
+            "type": "image/png"
         },
         {
-            "src": "images/touch/icon144.png",
+            "src": "icons/touch/icon144.png",
             "sizes": "168x168",
-            "type": "images/png"
+            "type": "image/png"
         },
         {
-            "src": "images/touch/icon192.png",
+            "src": "icons/touch/icon192.png",
             "sizes": "192x192",
-            "type": "images/png"
+            "type": "image/png"
         }
     ]
 }

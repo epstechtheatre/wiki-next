@@ -5,6 +5,10 @@ authors: ["Ben MacDonald"]
 # tags: []
 ---
 
+::: tip
+I am created by the page
+:::
+
 ## Usage
 
 <LightingKey name="At"/> has two primary usages:

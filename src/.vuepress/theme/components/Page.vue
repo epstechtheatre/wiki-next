@@ -4,8 +4,15 @@
         <div class="page-header-navbar-spacer"/>
         <ClientOnly><LightingBoardPreferenceSelector v-if="$page.path.startsWith('/lighting')" class="lighting-board-preference-wrapper"/></ClientOnly>
         <Draft class="page-draft-warning" v-if="$page.frontmatter && $page.frontmatter.draft == true"/>
+        <div class="page-title-content">
+            <h1><span><v-icon v-if="$page.frontmatter.icon" aria-hidden="true" color="var(--textColour)">{{$page.frontmatter.icon}}</v-icon>{{$page.frontmatter.title}}</span></h1>
+            <p class="page-displayed-metadata">
+                <span v-if="$page.frontmatter.category !== undefined" class='page-category'><v-icon aria-label="Category" color="var(--textColour)">mdi-widgets</v-icon><v-chip label outlined><span class="page-category-text">{{$page.frontmatter.category}}</span></v-chip></span>
+                <span v-if="$page.frontmatter.tags !== undefined && $page.frontmatter.tags.length > 0" class='page-tags'><v-icon aria-label="Tags" color="var(--textColour)">mdi-tag-multiple</v-icon><PageTag class="page-tag" :key="tag" v-for="tag in $page.frontmatter.tags" :tagText="tag"/></span>
+            </p>
+            <hr>
+        </div>
         <Content :key="$page.path" class="theme-default-content"/>
-        <PageTag v-if="$page.frontmatter && $page.frontmatter.tags && $page.frontmatter.tags.length > 0"/>
         <Authors/>
         <PageEdit />
 
@@ -22,7 +29,7 @@ import PageNav from './PageNav.vue';
 import Authors from "./Authors.vue";
 import Copyright from "./Copyright.vue";
 import PageTag from "./PageTag.vue";
-import Draft from "./Draft.vue"
+import Draft from "./Draft.vue";
 import LightingBoardPreferenceSelector from "./LightingBoardPreferenceSelector.vue";
 
 export default {
@@ -30,38 +37,7 @@ export default {
     props: ['sidebarItems'],
 
     beforeMount() {
-        document.querySelectorAll(".custom-block.command").forEach(item => {
-            const target = item.childElementCount == 2 ? item.children[1] : item.children[0]
-            target.classList.add("lighting_command_container")
 
-            if (target.textContent) {
-                //1 split elements by key name or key group
-                const keyNames = target.textContent.trim().split(",");
-                target.textContent = "";
-
-                //For each key (group)
-                keyNames.forEach((name, index) => {
-                    //Possibly split the key group, represent these are simultaneous keypress
-                    
-                    //Cant use plus because that is a key on the keyboard
-                    if (name.search("&") >=0) {
-                        const simulElS = document.createElement("span")
-                        simulElS.classList.add("lighting_key_simultaneous_group")
-
-                        const splitMore = name.split("&");
-                        splitMore.forEach((item, index2) => {
-                            simulElS.appendChild(createKeyEl(item, true));
-                            if (index2 < splitMore.length - 1) simulElS.appendChild(createSepEl(true));
-                        })
-
-                        target.appendChild(simulElS)
-                    } else {
-                        target.appendChild(createKeyEl(name));
-                        if (index < keyNames.length - 1) target.appendChild(createSepEl());
-                    }
-                })
-            }
-        })
     }
 }
 
@@ -74,6 +50,22 @@ export default {
     padding-bottom 2rem
     display block
 
+.page-title-content {
+    @extend $marginWrapper
+    display: block
+
+    .page-displayed-metadata {
+        margin-bottom: 7px !important
+    }
+
+    .page-category {
+        margin-right: 15px !important
+        .page-category-text {
+            color: var(--textColour)
+        }
+    }
+}
+
 .lighting-board-preference-wrapper
     @extend $marginWrapper
     display: block
@@ -84,4 +76,7 @@ export default {
     
 .page-header-navbar-spacer
     height: $navbarHeight
+
+.page-tag
+    margin-right: 3px
 </style>

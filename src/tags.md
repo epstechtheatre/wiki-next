@@ -1,6 +1,3 @@
----
-draft: true
----
 # Tags
 
-<!-- <TagIndex /> -->
+<TagIndex />

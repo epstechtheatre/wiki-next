@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import SidebarLinks from '@theme/components/SidebarLinks.vue'
-import NavLinks from '@theme/components/NavLinks.vue'
+import SidebarLinks from '../components/SidebarLinks.vue'
+import NavLinks from '../components/NavLinks.vue'
 
 export default {
   name: 'Sidebar',
@@ -27,12 +27,6 @@ export default {
 
 <style lang="stylus">
 .sidebar
-  ul
-    padding 0
-    margin 0
-    list-style-type none
-  a
-    display inline-block
   .nav-links
     display none
     border-bottom 1px solid var(--borderColor)

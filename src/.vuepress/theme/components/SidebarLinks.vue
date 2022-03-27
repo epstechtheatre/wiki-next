@@ -1,32 +1,30 @@
 <template>
-  <ul
+  <v-list
     v-if="items.length"
     class="sidebar-links"
   >
-    <li
+    <section 
       v-for="(item, i) in items"
       :key="i"
     >
       <SidebarGroup
         v-if="item.type === 'group'"
         :item="item"
-        :open="i === openGroupIndex"
-        :collapsable="item.collapsable || item.collapsible"
         :depth="depth"
-        @toggle="toggleGroup(i)"
+        :collapsable="item.collapsable || item.collapsible"
       />
       <SidebarLink
         v-else
         :sidebar-depth="sidebarDepth"
         :item="item"
       />
-    </li>
-  </ul>
+    </section>
+  </v-list>
 </template>
 
 <script>
-import SidebarGroup from '@theme/components/SidebarGroup.vue'
-import SidebarLink from '@theme/components/SidebarLink.vue'
+import SidebarGroup from '../components/SidebarGroup.vue'
+import SidebarLink from '../components/SidebarLink.vue'
 import { isActive } from '../util'
 
 export default {

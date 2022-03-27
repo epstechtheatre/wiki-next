@@ -3,6 +3,8 @@ import path from "path";
 import lodash from "lodash";
 const {capitalize} = lodash;
 
+const HOSTNAME = "techwiki.b-macdonald.ca"
+
 export default {
     /**
     * Ref：https://v1.vuepress.vuejs.org/config/#title
@@ -78,7 +80,7 @@ export default {
         "redirect",
         "@vuepress/plugin-container",
         ["@vuepress/plugin-search", {searchMaxSuggestions: 10}],
-        ["vuepress-plugin-sitemap", {hostname: "http://localhost:8080",exclude: ["/404.html", "/tags.html"]}],
+        ["vuepress-plugin-sitemap", {hostname: `https://${HOSTNAME}`,exclude: ["/404.html", "/tags.html"]}],
         getLightingCommandContainerConfig(),
         getCollapsibleConfig(),
         getCollapsibleItemConfig()

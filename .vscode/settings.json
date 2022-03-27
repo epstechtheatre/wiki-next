@@ -34,5 +34,6 @@
         "techwiki",
         "vuepress",
         "vuetify"
-    ]
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }

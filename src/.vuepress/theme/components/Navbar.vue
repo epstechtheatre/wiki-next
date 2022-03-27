@@ -42,8 +42,8 @@
 <script>
 import AlgoliaSearchBox from './AlgoliaSearchBox.vue'
 import SearchBox from '@SearchBox'
-import SidebarButton from '@theme/components/SidebarButton.vue'
-import NavLinks from '@theme/components/NavLinks.vue'
+import SidebarButton from '../components/SidebarButton.vue'
+import NavLinks from '../components/NavLinks.vue'
 import ColourModeToggle from "./ColourModeToggle.vue"
 
 export default {

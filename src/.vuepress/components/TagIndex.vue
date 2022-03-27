@@ -1,20 +1,26 @@
 <template lang="html">
-  <div>
-    <span v-for="tag in Object.keys(tags)">
-      <h2 :id="tag">
-        <router-link
-          :to="{ path: `/tags.html#${tag}`}"
-          class="header-anchor"
-          aria-hidden="true">#</router-link>
-        {{tag}}
-      </h2>
-      <ul>
-        <li v-for="page in tags[tag]">
+  <div class="tag-page-wrapper">
+    <div class="tag-content">
+      <span v-for="tag in Object.keys(tags)">
+        <h2 :id="tag">
           <router-link
-            :to="{ path: page.path}">{{page.title}}</router-link>
-        </li>
-      </ul>
-    </span>
+            :to="{ path: `/tags.html#${tag}`}"
+            class="header-anchor"
+            aria-hidden="true">#</router-link>
+          {{tag}}
+        </h2>
+        <ul>
+          <li v-for="page in tags[tag]">
+            <router-link
+              :to="{ path: page.path}">{{page.title}}</router-link>
+          </li>
+        </ul>
+      </span>
+    </div> 
+
+    <div class="tag-sidebar">
+      Test
+    </div>
   </div>
 </template>
 
@@ -38,3 +44,22 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="stylus">
+.tag-page-wrapper {
+  display: flex
+  flex-direction: row
+}
+
+.tag-sidebar {
+  display: flex
+  float: right
+  background-color: white
+  width: 500px
+}
+
+.tag-content {
+  display: flex
+  flex-grow: 1
+}
+</style>

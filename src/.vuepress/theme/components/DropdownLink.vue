@@ -73,8 +73,8 @@
 </template>
 
 <script>
-import NavLink from '@theme/components/NavLink.vue'
-import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import NavLink from '../components/NavLink.vue'
+import DropdownTransition from '../components/DropdownTransition.vue'
 import last from 'lodash/last'
 
 export default {

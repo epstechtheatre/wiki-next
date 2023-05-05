@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://techwiki.b-macdonald.ca/sitemap.xml

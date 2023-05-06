@@ -1,5 +1,5 @@
 <template>
-    <object class="lighting_key_svg_graphic" type="image/svg+xml" name="Keyboard Graphic" :data="getUserGraphicPreference()"/>
+    <object ref="svgElement" class="lighting_key_svg_graphic" type="image/svg+xml" name="Keyboard Graphic" :data="getUserGraphicPreference()" @load="loaded"/>
 </template>
 
 <script lang="ts">
@@ -11,12 +11,41 @@ export default {
         revertToSoftkey: { //If a hardkey isn't found, show the positions of the softkeys instead
             type: Boolean,
             default: true
-        }
+        },
+        activatorX: Number,
+        activatorY: Number
     },
 
     methods: {
         getUserGraphicPreference: () => {
             return getSvgPathForPreference();
+        },
+        loaded() {
+            this.setBackgroundColour()
+        },
+        /**
+         * Set the background colour (to support dark-mode)
+         */
+        setBackgroundColour() {
+            //Get the CSS variables
+            const style = getComputedStyle(document.body);
+
+            //Set the overall background
+            if (this.$refs.svgElement) {
+                (this.$refs.svgElement as HTMLIFrameElement).contentDocument!.documentElement.style.backgroundColor = `${style.getPropertyValue("--c-bg")}`;
+            }
+
+            //Set the background for each individual button
+
+            //Set the colour of the fill lines
+        }
+    },
+    watch: {
+        '$vuetify.theme.name'(newVal) {
+            const style = getComputedStyle(document.body);
+            if (this.$refs.svgElement) {
+                (this.$refs.svgElement as HTMLIFrameElement).contentDocument!.documentElement.style.backgroundColor = `${style.getPropertyValue("--c-bg")}`;
+            }
         }
     }
 }
@@ -27,25 +56,20 @@ export default {
 .lighting_key_svg_graphic {
     position: absolute;
     display: flex;
-    top: 120%;
-
-    z-index: 9999;
+    z-index: 10;
 
     pointer-events: none;
     max-width: 450px;
-    background-color: var(--backgroundColour);
+    background-color: rgb(var(--v-theme-background)) !important;
     border-radius: 15px;
-    border: 1px ridge var(--shade-1);
-    width: max-content;
-    height: max-content;
     padding: 15px;
     overflow: visible;
     box-shadow: 1px 1px rgba(0,0,0,0.5);
 }
 
-@media (max-width: 450px) {
+@media (max-width: 959px) {
     .lighting_key_svg_graphic {
-        max-width: 100vw
+        max-width: 85vw
     }
 }
 </style>

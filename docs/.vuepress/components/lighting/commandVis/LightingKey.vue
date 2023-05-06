@@ -4,7 +4,10 @@
         :card-color="colour"
         :text="stylize(keyName)"
         :inline="normalizeBoolean(inline)"
+        :card-loading="hover"
         style="min-width: 52px;"
+        @mouseover="hover=true"
+        @mouseleave="hover=false"
     />
 </template>
 
@@ -30,6 +33,10 @@ export default {
             validator: (val: string|boolean) => {
                 return boolean.isBooleanIsh(val);
             }
+        },
+        partOfCommand: {
+            type: Boolean,
+            default: false
         }
     },
     components: {

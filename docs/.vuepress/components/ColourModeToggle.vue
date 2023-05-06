@@ -74,7 +74,6 @@ export default {
                     if (systemDark) return this.changeHandler("dark");
                     
                     return this.changeHandler("light");
-
             }
         },
 

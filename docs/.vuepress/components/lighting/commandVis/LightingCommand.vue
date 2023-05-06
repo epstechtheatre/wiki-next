@@ -1,4 +1,7 @@
 <template>
+    <KeepAlive>
+        <ConsoleOverlay v-if="hovering"/>
+    </KeepAlive>
     <VCard
         :class="normalizeBoolean(inline) ? $style.inline : undefined"
         elevation="2"
@@ -28,27 +31,22 @@
             </VRow>
         </VContainer>
         <span v-if="(normalizeBoolean(showTip) || normalizeBoolean(showLegend)) && !normalizeBoolean(inline)">
-            <VChip v-if="normalizeBoolean(showTip)"
-                variant="text"
-                color="green-darken-3"
-                prepend-icon="mdi-checkbox-marked-outline"
-                text="Tip: Hover over a button to see where it is on the keyboard"
-            />
-            <VChip v-if="normalizeBoolean(showLegend)"
-                variant="text"
-                style="justify-self: end;"
-                prepend-icon="mdi-information-box-outline"
-                color="blue-darken-2"
-            >
-                <p>Legend:
-                    <span class="text-cyan-darken-3">■</span> Hardkeys
-                    <span class="text-blue-grey-darken-3">■</span> Softkeys
-                </p>
-            </VChip>
+            <p class="text-green-darken-3" v-if="normalizeBoolean(showTip)" style="font-size: 90%;">
+                <VIcon style="vertical-align: text-top;">mdi-checkbox-marked-outline</VIcon>
+                Tip: Hover over a button to see where it is on the keyboard
+            </p>
+
+            <p class="text-blue-darken-2" v-if="normalizeBoolean(showLegend)" style="font-size: 90%;">
+                <VIcon style="vertical-align: text-top;">mdi-information-box-outline</VIcon> Legend:
+                <ul>
+                    <li><span class="text-cyan-darken-3">■</span>: Hardkeys</li>
+                    <li><span class="text-blue-grey-darken-3">■</span>: Softkeys</li>
+                    <li><span class="inheritSurfaceColor">{{ displayedSequentialSeparator }}</span>: Press keys sequentially</li>
+                    <li><span class="inheritSurfaceColor">{{ displayedSimultaneousSeparator }}</span>: Press keys simultaneously</li>
+                </ul>
+            </p>
         </span>
     </VCard>
-
-    <ConsoleOverlay/>
 </template>
 
 <script lang="ts">
@@ -128,12 +126,18 @@ export default {
         }
     },
 
-    components: { LightingKey, SegmentSeparator, SimultaneousGroup },
+    components: { LightingKey, SegmentSeparator, SimultaneousGroup, ConsoleOverlay },
 }
 </script>
 
 <style module>
 .inline {
     display: inline-flex;
+}
+</style>
+
+<style scoped>
+.inheritSurfaceColor {
+    color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity)) !important
 }
 </style>

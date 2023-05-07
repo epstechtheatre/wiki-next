@@ -1,19 +1,47 @@
 <template>
-    <object ref="svgElement" class="lighting_key_svg_graphic" type="image/svg+xml" name="Keyboard Graphic" :data="getUserGraphicPreference()" @load="loaded"/>
+    <object 
+        ref="svgElement" 
+        class="lighting_key_svg_graphic" 
+        type="image/svg+xml" 
+        name="Keyboard Graphic" 
+        :data="getUserGraphicPreference()" 
+        @load="loaded"
+        :style="'left:' + getXPos + '!important;right:' + getYPos + '!important;'"
+    />
 </template>
 
 <script lang="ts">
+export interface TargetComponentInfoSchema {
+    clientBounds: {
+        x: number, //left
+        y: number, //top
+        width: number,
+        height: number
+    }
+}
+
+import { VueElement } from "vue";
 import keyAliases from "../../../../json/lighting_key_name_alias.json";
 import {getSvgPathForPreference} from "../../../../util/lighting/lightingBoardCookieWrapper"
 export default {
+    computed: {
+        getXPos() {
+            debugger;
+            return this.activatorBounds?.clientBounds.x ?? 0;
+        },
+        getYPos() {
+            return this.activatorBounds?.clientBounds.y ?? 0;
+        }
+    },
     props: {
         keyName: [String, Array<String>], //Name of the key(s) to show
         revertToSoftkey: { //If a hardkey isn't found, show the positions of the softkeys instead
             type: Boolean,
             default: true
         },
-        activatorX: Number,
-        activatorY: Number
+        activatorBounds: {
+            type: Object as ()=>TargetComponentInfoSchema
+        }
     },
 
     methods: {
@@ -21,7 +49,7 @@ export default {
             return getSvgPathForPreference();
         },
         loaded() {
-            this.setBackgroundColour()
+            this.setBackgroundColour();
         },
         /**
          * Set the background colour (to support dark-mode)
@@ -35,9 +63,7 @@ export default {
                 (this.$refs.svgElement as HTMLIFrameElement).contentDocument!.documentElement.style.backgroundColor = `${style.getPropertyValue("--c-bg")}`;
             }
 
-            //Set the background for each individual button
-
-            //Set the colour of the fill lines
+            //FIXME svgs need to be redone to use transparent backgrounds and classes for a bunch of stuff
         }
     },
     watch: {
@@ -54,7 +80,7 @@ export default {
 <style scoped>
 
 .lighting_key_svg_graphic {
-    position: absolute;
+    position: fixed;
     display: flex;
     z-index: 10;
 

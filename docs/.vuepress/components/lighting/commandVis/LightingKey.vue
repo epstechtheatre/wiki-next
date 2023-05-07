@@ -4,14 +4,21 @@
         :card-color="colour"
         :text="stylize(keyName)"
         :inline="normalizeBoolean(inline)"
-        :card-loading="hover"
-        style="min-width: 52px;"
-        @mouseover="hover=true"
-        @mouseleave="hover=false"
+        :card-loading="hovering"
+        @mouseover="hover($event, true)"
+        @mouseleave="hover($event, false)"
+
+        :class="$style.lightingKey + ' ' + (hovering ? $style.hovering : undefined)"  
     />
 </template>
 
 <script lang="ts">
+export interface KeyHoveringEventSchema extends TargetComponentInfoSchema {
+    isHovering: boolean
+    keyName: string
+}
+
+import ConsoleOverlay, {TargetComponentInfoSchema} from "./components/ConsoleOverlay.vue"
 import Segment from "./components/Segment.vue";
 import * as boolean from "../../../util/boolean"
 
@@ -34,13 +41,14 @@ export default {
                 return boolean.isBooleanIsh(val);
             }
         },
-        partOfCommand: {
+        partOfCommand: { //If true, disables the command overlay on this component as all keys in a single command share an overlay
             type: Boolean,
             default: false
         }
     },
     components: {
-        Segment
+        Segment,
+        ConsoleOverlay
     },
     computed: {
         colour(): string {
@@ -72,14 +80,41 @@ export default {
     },
     data() {
         return {
-            hover: false
+            hovering: false
         };
     },
     methods: {
         stylize: (keyName: string): string => {
             return keyName.replace("{","").replace("}","");
         },
-        normalizeBoolean(val: string|boolean) { return boolean.normalizeBooleanIsh(val);}
+        normalizeBoolean(val: string|boolean) { return boolean.normalizeBooleanIsh(val);},
+
+
+        hover(event: Event, newState: boolean) {
+            const bounds = (event.target as Element).getBoundingClientRect();
+
+            this.hovering = newState;
+            this.$emit("hovering", {
+                isHovering: newState,
+                clientBounds: {
+                    x: bounds.x,
+                    y: bounds.y,
+                    height: bounds.height,
+                    width: bounds.width
+                },
+                keyName: this.stylize(this.keyName)
+            } as KeyHoveringEventSchema)
+        },
     }
 }
 </script>
+
+<style module>
+.lightingKey {
+    min-width: 52px;
+    transition: transform 0.2s ease-out;
+}
+.hovering {
+    transform: translateY(5px);
+}
+</style>

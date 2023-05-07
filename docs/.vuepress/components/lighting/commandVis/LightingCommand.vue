@@ -1,6 +1,11 @@
 <template>
     <KeepAlive>
-        <ConsoleOverlay v-if="hovering"/>
+        <VFadeTransition>
+            <ConsoleOverlay 
+                v-if="currentHover.isHovering || true"
+                :activatorBounds="currentHover"
+            />
+        </VFadeTransition>
     </KeepAlive>
     <VCard
         :class="normalizeBoolean(inline) ? $style.inline : undefined"
@@ -16,6 +21,7 @@
                         :keyName="item" 
                         :inline="normalizeBoolean(inline)" 
                         :partOfCommand="true"
+                        @hovering="hoverHandler"
                     />
                     <SimultaneousGroup v-else 
                         :keyNames="(item as Array<String>)" 
@@ -56,8 +62,8 @@ const INPUT_SIMULTANEOUS_SEPARATORS = "\+\&"
 
 import SimultaneousGroup from "./components/SimultaneousGroup.vue";
 import SegmentSeparator from "./components/SegmentSeparator.vue";
-import LightingKey from "./LightingKey.vue";
-import ConsoleOverlay from "./components/ConsoleOverlay.vue"
+import LightingKey, { KeyHoveringEventSchema } from "./LightingKey.vue";
+import ConsoleOverlay, { TargetComponentInfoSchema } from "./components/ConsoleOverlay.vue"
 import * as boolean from "../../../util/boolean";
 
 export default {
@@ -123,6 +129,29 @@ export default {
             })
 
             return output;
+        },
+        hoverHandler(newHoverState: KeyHoveringEventSchema) {
+
+            //Type it out so pass-by-reference is preserved
+            this.currentHover.isHovering = newHoverState.isHovering;
+            this.currentHover.clientBounds.x = newHoverState.clientBounds.x;
+            this.currentHover.clientBounds.y = newHoverState.clientBounds.y;
+            this.currentHover.clientBounds.width = newHoverState.clientBounds.width;
+            this.currentHover.clientBounds.height = newHoverState.clientBounds.height;
+        }
+    },
+    data() {
+        return {
+            currentHover: {
+                isHovering: false,
+                clientBounds: {
+                    x: 0,
+                    y: 0,
+                    width: 0,
+                    height: 0
+                },
+                keyName: ""
+            } as KeyHoveringEventSchema
         }
     },
 

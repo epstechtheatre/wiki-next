@@ -1,12 +1,13 @@
 <template>
-    <KeepAlive>
-        <VFadeTransition>
-            <ConsoleOverlay 
-                v-if="currentHover.isHovering || true"
-                :activatorBounds="currentHover"
-            />
-        </VFadeTransition>
-    </KeepAlive>
+    <VFadeTransition>
+        <ConsoleOverlay 
+            :activator="currentHover.hoverTarget"
+            :key-name="currentHover.keyName"
+            :revert-to-softkey="currentHover.isSoftkey"
+    
+            v-if="currentHover.hoverTarget != undefined"
+        />
+    </VFadeTransition>
     <VCard
         :class="normalizeBoolean(inline) ? $style.inline : undefined"
         elevation="2"
@@ -21,12 +22,13 @@
                         :keyName="item" 
                         :inline="normalizeBoolean(inline)" 
                         :partOfCommand="true"
-                        @hovering="hoverHandler"
+                        @hoverUpdate="hoverHandler"
                     />
                     <SimultaneousGroup v-else 
                         :keyNames="(item as Array<String>)" 
                         :separator="displayedSimultaneousSeparator" 
                         :inline="normalizeBoolean(inline)"
+                        @hoverUpdate="hoverHandler"
                     />
 
                     <SegmentSeparator v-if="index < parseCommand().length -1" 
@@ -63,7 +65,7 @@ const INPUT_SIMULTANEOUS_SEPARATORS = "\+\&"
 import SimultaneousGroup from "./components/SimultaneousGroup.vue";
 import SegmentSeparator from "./components/SegmentSeparator.vue";
 import LightingKey, { KeyHoveringEventSchema } from "./LightingKey.vue";
-import ConsoleOverlay, { TargetComponentInfoSchema } from "./components/ConsoleOverlay.vue"
+import ConsoleOverlay from "./components/ConsoleOverlay.vue"
 import * as boolean from "../../../util/boolean";
 
 export default {
@@ -131,26 +133,18 @@ export default {
             return output;
         },
         hoverHandler(newHoverState: KeyHoveringEventSchema) {
-
             //Type it out so pass-by-reference is preserved
-            this.currentHover.isHovering = newHoverState.isHovering;
-            this.currentHover.clientBounds.x = newHoverState.clientBounds.x;
-            this.currentHover.clientBounds.y = newHoverState.clientBounds.y;
-            this.currentHover.clientBounds.width = newHoverState.clientBounds.width;
-            this.currentHover.clientBounds.height = newHoverState.clientBounds.height;
+            this.currentHover.keyName = newHoverState.keyName;
+            this.currentHover.isSoftkey = newHoverState.isSoftkey;
+            this.currentHover.hoverTarget = newHoverState.hoverTarget;
         }
     },
     data() {
         return {
             currentHover: {
-                isHovering: false,
-                clientBounds: {
-                    x: 0,
-                    y: 0,
-                    width: 0,
-                    height: 0
-                },
-                keyName: ""
+                hoverTarget: undefined,
+                keyName: "",
+                isSoftkey: false
             } as KeyHoveringEventSchema
         }
     },

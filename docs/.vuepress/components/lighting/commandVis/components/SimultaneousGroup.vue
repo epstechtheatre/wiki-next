@@ -9,6 +9,8 @@
                         :key-name="item.valueOf()" 
                         :partOfCommand='true'
                         :inline="inline"
+
+                        @hoverUpdate="hoverHandler"
                     />
 
                     <SegmentSeparator v-if="index < keyNames.length -1"
@@ -23,7 +25,8 @@
 
 <script lang="ts">
 import SegmentSeparator from "./SegmentSeparator.vue";
-import LightingKey from "../LightingKey.vue";
+import LightingKey, { KeyHoveringEventSchema } from "../LightingKey.vue";
+import { stylizeKeyName } from "../../../../util/lighting/formatters";
 
 export default {
     props: {
@@ -40,6 +43,18 @@ export default {
     components: {
         SegmentSeparator,
         LightingKey
-    }
+    },
+    methods: {
+        hoverHandler(newHoverState: KeyHoveringEventSchema) {
+            this.$emit("hoverUpdate", {
+                hoverTarget: newHoverState.hoverTarget,
+                isSoftkey: newHoverState.isSoftkey,
+                keyName: this.keyNames.map((key) => stylizeKeyName(key.valueOf()))
+            } as KeyHoveringEventSchema)
+        }
+    },
+    emits: [
+        "hoverUpdate"
+    ]
 }
 </script>

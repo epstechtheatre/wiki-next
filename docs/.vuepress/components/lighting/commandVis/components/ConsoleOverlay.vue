@@ -1,36 +1,72 @@
 <template>
-    <object 
-        ref="svgElement" 
-        class="lighting_key_svg_graphic" 
-        type="image/svg+xml" 
-        name="Keyboard Graphic" 
-        :data="getUserGraphicPreference()" 
-        @load="loaded"
-        :style="'left:' + getXPos + '!important;right:' + getYPos + '!important;'"
-    />
+    <VCard 
+        class="console_overlay_wrapper"
+        :style="'left:' + getXPos + 'px;top:' + getYPos + 'px;'"
+        density="compact"
+        :class="!isLoaded ? 'console_overlay_hide' : ''"
+        hover
+    >
+        <object 
+            class="console_overlay_svg"
+            ref="svgElement" 
+            type="image/svg+xml" 
+            name="Keyboard Graphic" 
+            style="background-color: inherit;"
+            :data="getUserGraphicPreference()" 
+            @load="loaded"
+        />
+    </VCard>
 </template>
 
 <script lang="ts">
-export interface TargetComponentInfoSchema {
-    clientBounds: {
-        x: number, //left
-        y: number, //top
-        width: number,
-        height: number
-    }
-}
+const KEY_HOVER_TRANSFORM_DISTANCE = 5; //When keys are hovered over, they move a little bit (this many pixels)
+const KEY_HOVER_BUFFER_DISTANCE = 5; //Buffer between end of key component and start of this overlay
 
-import { VueElement } from "vue";
+
 import keyAliases from "../../../../json/lighting_key_name_alias.json";
 import {getSvgPathForPreference} from "../../../../util/lighting/lightingBoardCookieWrapper"
 export default {
     computed: {
         getXPos() {
-            debugger;
-            return this.activatorBounds?.clientBounds.x ?? 0;
+            //Try to center below the activator, but if not possible just do your best
+
+            if (this.activator == undefined) return 0;
+            //@ts-expect-error For some reason Vue not recognizing this.svgWidth as a property
+            const trial = (this.activatorX + this.activatorWidth/2) - this.svgWidth/2;
+            //If centering pushes one edge of the svg off the edge of the screen, don't do that and just center
+
+            //https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
+            const browserWidth = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
+            if (trial < 0 || trial + this.svgWidth > browserWidth) {
+                //Center in screen
+
+                //@ts-expect-error For some reason Vue not recognizing this.svgWidth as a property
+                return browserWidth/2 - this.svgWidth/2;
+            } else {
+                return trial;
+            }
         },
         getYPos() {
-            return this.activatorBounds?.clientBounds.y ?? 0;
+            if (this.activator != undefined) {
+                return this.activatorY+this.activatorHeight + KEY_HOVER_TRANSFORM_DISTANCE + KEY_HOVER_BUFFER_DISTANCE;
+            }
+
+            return 0;
+        },
+        activatorX() {
+            return this.activator?.getBoundingClientRect().x ?? 0;
+        },
+        activatorY() {
+            return this.activator?.getBoundingClientRect().y ?? 0;
+        },
+        activatorWidth() {
+            return this.activator?.getBoundingClientRect().width ?? 0;
+        },
+        activatorHeight() {
+            return this.activator?.getBoundingClientRect().height ?? 0;
         }
     },
     props: {
@@ -39,9 +75,20 @@ export default {
             type: Boolean,
             default: true
         },
-        activatorBounds: {
-            type: Object as ()=>TargetComponentInfoSchema
+        activator: Element
+    },
+    data() {
+        return {
+            svgWidth: 0,
+            isLoaded: false
         }
+    },
+    created() {
+        window.addEventListener("resize", this.resizeHandler);
+    },
+    unmounted() {
+        window.removeEventListener("resize", this.resizeHandler);
+        this.isLoaded = false;
     },
 
     methods: {
@@ -50,52 +97,73 @@ export default {
         },
         loaded() {
             this.setBackgroundColour();
+
+            this.svgWidth = (this.$refs.svgElement as Element)?.clientWidth ?? 0
+
+            this.isLoaded = true;
+
+            this.highlightKey();
         },
         /**
          * Set the background colour (to support dark-mode)
          */
         setBackgroundColour() {
-            //Get the CSS variables
-            const style = getComputedStyle(document.body);
-
-            //Set the overall background
             if (this.$refs.svgElement) {
-                (this.$refs.svgElement as HTMLIFrameElement).contentDocument!.documentElement.style.backgroundColor = `${style.getPropertyValue("--c-bg")}`;
+                const style = getComputedStyle(this.$refs.svgElement as Element);
+                (this.$refs.svgElement as HTMLIFrameElement).contentDocument!.documentElement.style.backgroundColor = `rgb(${style.getPropertyValue("--v-theme-surface")})`;
+                // (this.$refs.svgElement as HTMLIFrameElement).contentDocument!.documentElement.style.backgroundColor = `${style.getPropertyValue("--c-bg")}`;
             }
 
             //FIXME svgs need to be redone to use transparent backgrounds and classes for a bunch of stuff
+        },
+        resizeHandler() {
+            this.svgWidth = (this.$refs.svgElement as Element).clientWidth;
+        },
+        highlightKey() {
+            
         }
     },
     watch: {
-        '$vuetify.theme.name'(newVal) {
-            const style = getComputedStyle(document.body);
-            if (this.$refs.svgElement) {
-                (this.$refs.svgElement as HTMLIFrameElement).contentDocument!.documentElement.style.backgroundColor = `${style.getPropertyValue("--c-bg")}`;
-            }
+        '$vuetify.theme.name'() {
+            this.setBackgroundColour();
         }
     }
 }
 </script>
 
 <style scoped>
-
-.lighting_key_svg_graphic {
+.console_overlay_hide {
+    opacity: 0;
+}
+.console_overlay_wrapper {
     position: fixed;
-    display: flex;
+    left: 0;
+    top: 0;
     z-index: 10;
 
+    overflow: visible;
+    width: max-content;
     pointer-events: none;
     max-width: 450px;
-    background-color: rgb(var(--v-theme-background)) !important;
+
     border-radius: 15px;
-    padding: 15px;
+
+    padding: 15px !important;
+    transition: opacity 0.1s linear, top 0.1s ease-out; 
+    /* Top because sometimes if the user moves their cursor just off the activator the coordinates can be recalculated and cause the overlay to jump, transition makes it smoother */
+}
+
+.console_overlay_svg {
+    max-width: 100%;
     overflow: visible;
-    box-shadow: 1px 1px rgba(0,0,0,0.5);
+    padding: 2px
 }
 
 @media (max-width: 959px) {
-    .lighting_key_svg_graphic {
-        max-width: 85vw
+    .console_overlay_wrapper {
+        max-width: 85vw !important;
     }
 }
+
+
 </style>

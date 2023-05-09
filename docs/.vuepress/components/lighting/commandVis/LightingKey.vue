@@ -2,25 +2,36 @@
     <Segment
         :card-elevation="2"
         :card-color="colour"
-        :text="stylize(keyName)"
+        :text="keyName"
         :inline="normalizeBoolean(inline)"
-        :card-loading="hovering"
         @mouseover="hover($event, true)"
         @mouseleave="hover($event, false)"
 
         :class="$style.lightingKey + ' ' + (hovering ? $style.hovering : undefined)"  
     />
+    <template v-if="!partOfCommand">
+        <!-- Add in the console overlay if and only if this key isn't part of a command (cause the LightingCommand.vue component handles the overlay displaying) -->
+        <ConsoleOverlay
+            :activator="activator"
+            :key-name="keyName"
+            :revert-to-softkey="isSoftkey"
+    
+            v-if="hovering"
+        />
+    </template>
 </template>
 
 <script lang="ts">
-export interface KeyHoveringEventSchema extends TargetComponentInfoSchema {
-    isHovering: boolean
-    keyName: string
+export interface KeyHoveringEventSchema {
+    hoverTarget: Element|undefined //undefined if not hovering
+    keyName: string|string[]
+    isSoftkey: boolean
 }
 
-import ConsoleOverlay, {TargetComponentInfoSchema} from "./components/ConsoleOverlay.vue"
 import Segment from "./components/Segment.vue";
 import * as boolean from "../../../util/boolean"
+import ConsoleOverlay from "./components/ConsoleOverlay.vue";
+import { stylizeKeyName } from "../../..//util/lighting/formatters";
 
 const LIGHT_HARDKEY_COLOUR = "cyan-darken-3";
 const DARK_HARDKEY_COLOUR = "cyan-darken-4";
@@ -47,9 +58,9 @@ export default {
         }
     },
     components: {
-        Segment,
-        ConsoleOverlay
-    },
+    Segment,
+    ConsoleOverlay
+},
     computed: {
         colour(): string {
             if (this.$vuetify.theme.current.dark) {
@@ -66,13 +77,16 @@ export default {
                 }
             }
         },
-        key: function (): string {
-            //@ts-ignore
-            if (this.$props.keyName?.length > 0) return this.$props.keyName;
-            //@ts-ignore
-            if (this.$slots?.default[0]?.text && this.$slots.default[0]?.text?.length > 0) return this.$slots.default[0]?.text;
+        keyName: function (): string {
+            if (this.keyName?.length > 0) return stylizeKeyName(this.keyName);
 
-            return "Invalid Key";
+            if (
+                this.$slots?.default &&
+                this.$slots?.default[0]?.text && 
+                this.$slots.default[0]?.text?.length > 0
+            ) return stylizeKeyName(this.$slots.default[0]?.text);
+
+            return "Invalid Key Name!";
         },
         isSoftkey() {
             return this.keyName.startsWith("{") && this.keyName.endsWith("}");
@@ -80,32 +94,36 @@ export default {
     },
     data() {
         return {
-            hovering: false
+            hovering: false,
+
+            activator: undefined as Element|undefined
         };
     },
     methods: {
-        stylize: (keyName: string): string => {
-            return keyName.replace("{","").replace("}","");
-        },
         normalizeBoolean(val: string|boolean) { return boolean.normalizeBooleanIsh(val);},
 
 
         hover(event: Event, newState: boolean) {
-            const bounds = (event.target as Element).getBoundingClientRect();
-
             this.hovering = newState;
-            this.$emit("hovering", {
-                isHovering: newState,
-                clientBounds: {
-                    x: bounds.x,
-                    y: bounds.y,
-                    height: bounds.height,
-                    width: bounds.width
-                },
-                keyName: this.stylize(this.keyName)
-            } as KeyHoveringEventSchema)
-        },
-    }
+
+            if (newState) {
+                this.activator = event.target as Element;
+            } else {
+                this.activator = undefined;
+            }
+
+            if (this.partOfCommand) {
+                this.$emit("hoverUpdate", {
+                    hoverTarget: newState ? event.target : undefined,
+                    keyName: this.keyName,
+                    isSoftkey: this.isSoftkey
+                } as KeyHoveringEventSchema)
+            }
+        }
+    },
+    emits: [
+        "hoverUpdate"
+    ]
 }
 </script>
 

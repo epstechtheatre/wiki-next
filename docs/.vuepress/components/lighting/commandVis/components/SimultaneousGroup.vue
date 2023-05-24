@@ -9,6 +9,7 @@
                         :key-name="item.valueOf()" 
                         :partOfCommand='true'
                         :inline="inline"
+                        :simultaneousGroupIndex="index"
 
                         @hoverUpdate="hoverHandler"
                     />
@@ -49,7 +50,8 @@ export default {
             this.$emit("hoverUpdate", {
                 hoverTarget: newHoverState.hoverTarget,
                 isSoftkey: newHoverState.isSoftkey,
-                keyName: this.keyNames.map((key) => stylizeKeyName(key.valueOf()))
+                keyName: this.keyNames.map((key) => stylizeKeyName(key.valueOf())),
+                simultaneousHoverIndex: newHoverState.simultaneousHoverIndex
             } as KeyHoveringEventSchema)
         }
     },

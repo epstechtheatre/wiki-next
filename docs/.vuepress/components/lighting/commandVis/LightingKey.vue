@@ -2,7 +2,7 @@
     <Segment
         :card-elevation="2"
         :card-color="colour"
-        :text="keyName"
+        :text="stylizeKeyName(keyName)"
         :inline="normalizeBoolean(inline)"
         @mouseover="hover($event, true)"
         @mouseleave="hover($event, false)"
@@ -26,6 +26,7 @@ export interface KeyHoveringEventSchema {
     hoverTarget: Element|undefined //undefined if not hovering
     keyName: string|string[]
     isSoftkey: boolean
+    simultaneousHoverIndex?: number
 }
 
 import Segment from "./components/Segment.vue";
@@ -55,6 +56,9 @@ export default {
         partOfCommand: { //If true, disables the command overlay on this component as all keys in a single command share an overlay
             type: Boolean,
             default: false
+        },
+        simultaneousGroupIndex: {
+            type: Number
         }
     },
     components: {
@@ -77,7 +81,7 @@ export default {
                 }
             }
         },
-        keyName: function (): string {
+        getKeyName: function (): string {
             if (this.keyName?.length > 0) return stylizeKeyName(this.keyName);
 
             if (
@@ -101,7 +105,7 @@ export default {
     },
     methods: {
         normalizeBoolean(val: string|boolean) { return boolean.normalizeBooleanIsh(val);},
-
+        stylizeKeyName(string: string) {return stylizeKeyName(string)},
 
         hover(event: Event, newState: boolean) {
             this.hovering = newState;
@@ -115,8 +119,9 @@ export default {
             if (this.partOfCommand) {
                 this.$emit("hoverUpdate", {
                     hoverTarget: newState ? event.target : undefined,
-                    keyName: this.keyName,
-                    isSoftkey: this.isSoftkey
+                    keyName: stylizeKeyName(this.keyName),
+                    isSoftkey: this.isSoftkey,
+                    simultaneousHoverIndex: this.simultaneousGroupIndex ?? undefined
                 } as KeyHoveringEventSchema)
             }
         }
@@ -133,6 +138,6 @@ export default {
     transition: transform 0.2s ease-out;
 }
 .hovering {
-    transform: translateY(5px);
+    transform: translateY(3px);
 }
 </style>

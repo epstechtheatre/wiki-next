@@ -4,6 +4,7 @@
             :activator="currentHover.hoverTarget"
             :key-name="currentHover.keyName"
             :revert-to-softkey="currentHover.isSoftkey"
+            :simultaneous-hover-index="currentHover.simultaneousHoverIndex"
     
             v-if="currentHover.hoverTarget != undefined"
         />
@@ -137,6 +138,7 @@ export default {
             this.currentHover.keyName = newHoverState.keyName;
             this.currentHover.isSoftkey = newHoverState.isSoftkey;
             this.currentHover.hoverTarget = newHoverState.hoverTarget;
+            this.currentHover.simultaneousHoverIndex = newHoverState.simultaneousHoverIndex;
         }
     },
     data() {

@@ -43,6 +43,8 @@
     "stop": "stopback",
     "back": "stopback",
     "backstop": "stopback",
+    "stop/back": "stopback",
+    "back/stop": "stopback",
 
     "label": "label_note",
     "note": "label_note",

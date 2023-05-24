@@ -19,12 +19,12 @@
 </template>
 
 <script lang="ts">
-const KEY_HOVER_TRANSFORM_DISTANCE = 5; //When keys are hovered over, they move a little bit (this many pixels)
+const KEY_HOVER_TRANSFORM_DISTANCE = 3; //When keys are hovered over, they move a little bit (this many pixels)
 const KEY_HOVER_BUFFER_DISTANCE = 5; //Buffer between end of key component and start of this overlay
 
 
-import keyAliases from "../../../../json/lighting_key_name_alias.json";
 import {getSvgPathForPreference} from "../../../../util/lighting/lightingBoardCookieWrapper"
+import { svgHighlightKey } from "../../../../util/lighting/svgHelpers";
 export default {
     computed: {
         getXPos() {
@@ -75,6 +75,7 @@ export default {
             type: Boolean,
             default: true
         },
+        simultaneousHoverIndex: Number, //Index of the hovered key (useful for hover colourization)
         activator: Element
     },
     data() {
@@ -120,7 +121,14 @@ export default {
             this.svgWidth = (this.$refs.svgElement as Element).clientWidth;
         },
         highlightKey() {
-            
+            if (this.keyName == undefined || this.$refs.svgElement == undefined) return;
+
+            svgHighlightKey(
+                this.keyName as string|string[], 
+                (this.$refs.svgElement as HTMLIFrameElement).contentDocument!,
+                this.revertToSoftkey,
+                this.simultaneousHoverIndex ?? undefined
+            )
         }
     },
     watch: {

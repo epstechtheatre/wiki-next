@@ -1,4 +1,4 @@
-import { defaultTheme, defineUserConfig } from "vuepress"
+import { defaultTheme, defineUserConfig, viteBundler } from "vuepress"
 import {registerComponentsPlugin} from "@vuepress/plugin-register-components";
 import path from "path"
 
@@ -24,5 +24,12 @@ export default defineUserConfig({
                 LightingKey: path.resolve(__dirname, "./components/lighting/commandVis/LightingKey.vue")
             }
         })
-    ]
+    ],
+    bundler: viteBundler({
+        viteOptions: {
+            ssr: {
+                noExternal: ["vuetify"]
+            }
+        }
+    })
 })

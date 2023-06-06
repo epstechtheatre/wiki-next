@@ -1,12 +1,14 @@
-import { defineClientConfig } from "@vuepress/client"
+import { defineClientConfig } from "@vuepress/client";
 
 import '@mdi/font/css/materialdesignicons.css';
-import "vuetify/styles"
+import "vuetify/styles";
 import { createVuetify } from 'vuetify';
-import * as components from "vuetify/components"
-import * as directives from "vuetify/directives"
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
 
-import Layout from "./layouts/Layout.vue"
+import { createPinia } from "pinia";
+
+import Layout from "./layouts/Layout.vue";
 
 export default defineClientConfig({
     enhance({app, router, siteData}) {
@@ -27,7 +29,9 @@ export default defineClientConfig({
             }
         })
 
-        app.use(vuetify);
+        const pinia = createPinia();
+
+        app.use(vuetify).use(pinia);
     },
 
     layouts: {

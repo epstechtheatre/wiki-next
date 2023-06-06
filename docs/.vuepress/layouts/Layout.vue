@@ -2,16 +2,18 @@
     <VApp>
         <ParentLayout>
             <template #page-content-top v-if="isLightingRoute">
-                <BoardConfigure/>
+                <ClientOnly><BoardConfigure/></ClientOnly>
+                <!-- Required ClientOnly as cookies reference the document client property -->
             </template>
         </ParentLayout>
     </VApp>
 </template>
 
 <script setup lang="ts">
-import ParentLayout from "@vuepress/theme-default/layouts/Layout.vue"
-import BoardConfigure from "../components/lighting/BoardConfigure.vue"
-import {usePageData} from "@vuepress/client"
+import ParentLayout from "@vuepress/theme-default/layouts/Layout.vue";
+import BoardConfigure from "../components/lighting/BoardConfigure.vue";
+import {usePageData} from "@vuepress/client";
+
 </script>
 
 <script lang="ts">

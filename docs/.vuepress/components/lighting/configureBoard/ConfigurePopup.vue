@@ -7,9 +7,9 @@
             <v-btn
             v-bind="props"
             variant="tonal"
-            @click="setToCurrentPreference"
+            @click="selectedVal = boardPreferenceOrDefault.valueOf()"
             >
-            Click Me
+            Click Here
             </v-btn>
         </template>
 
@@ -19,8 +19,7 @@
                 Please select what board you are using from the dropdown:
                 <VForm>
                     <VSelect
-                        :items="availableChoices"
-                        hide-selected
+                        :items="availableOptions"
                         v-model="selectedVal"
                     />
                 </VForm>
@@ -34,41 +33,42 @@
     </v-dialog>
 </template>
 
-<script>
+<script lang="ts">
+import { useLightingPrefsStore, availableSvgs } from "../../../store/lightingPrefs";
+import { storeToRefs } from "pinia";
+
 const RESET_TEXT = "Reset to Default";
-import {getDefaultOption, getAvailableOptions, getPreference, setPreference, deletePreference} from "../../../util/lighting/lightingBoardCookieWrapper"
 export default {
+    setup() {
+        const lightingStore = useLightingPrefsStore();
+        const { boardPreferenceOrDefault } = storeToRefs(lightingStore);
+
+        return {
+            lightingStore,
+            boardPreferenceOrDefault
+        }
+    },
     data () {
         return {
             dialog: false,
-            selectedVal: undefined
+            selectedVal: undefined as string|undefined
         }
     },
     computed: {
-        availableChoices() {
-            const options = getAvailableOptions();
+        availableOptions() {
+            const options = Object.keys(availableSvgs() ?? [])
             options.push(RESET_TEXT);
             return options;
-        },
-        getPreference() {
-            return getPreference() ?? getDefaultOption();
         }
     },
-    mounted() {
-        this.setToCurrentPreference();
-    },
     methods: {
-        setToCurrentPreference() {
-            this.selectedVal = this.getPreference;
-        },
         save() {
             this.dialog = false;
             if (this.selectedVal === RESET_TEXT) {
-                deletePreference();
+                this.lightingStore.clearBoardPreference();
             } else {
-                setPreference(this.selectedVal)
+                this.lightingStore.setBoardPreference(this.selectedVal as any)
             }
-            location.reload();
         }
     }
 }

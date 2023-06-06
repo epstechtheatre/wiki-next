@@ -12,19 +12,27 @@
             type="image/svg+xml" 
             name="Keyboard Graphic" 
             style="background-color: inherit;"
-            :data="getUserGraphicPreference()" 
+            :data="boardSvgPath" 
             @load="loaded"
         />
     </VCard>
 </template>
 
+<script setup lang="ts">
+import { useLightingPrefsStore } from "../../../../store/lightingPrefs";
+import { storeToRefs } from "pinia";
+
+const lightingStore = useLightingPrefsStore();
+const { boardSvgPath } = storeToRefs(lightingStore);
+
+</script>
+
 <script lang="ts">
 const KEY_HOVER_TRANSFORM_DISTANCE = 3; //When keys are hovered over, they move a little bit (this many pixels)
 const KEY_HOVER_BUFFER_DISTANCE = 5; //Buffer between end of key component and start of this overlay
 
-
-import {getSvgPathForPreference} from "../../../../util/lighting/lightingBoardCookieWrapper"
 import { svgHighlightKey } from "../../../../util/lighting/svgHelpers";
+import { PropType } from "vue"
 export default {
     computed: {
         getXPos() {
@@ -76,7 +84,7 @@ export default {
             default: true
         },
         simultaneousHoverIndex: Number, //Index of the hovered key (useful for hover colourization)
-        activator: Element
+        activator: Object as PropType<HTMLElement>
     },
     data() {
         return {
@@ -93,9 +101,6 @@ export default {
     },
 
     methods: {
-        getUserGraphicPreference: () => {
-            return getSvgPathForPreference();
-        },
         loaded() {
             this.setBackgroundColour();
 

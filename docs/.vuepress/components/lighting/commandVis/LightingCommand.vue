@@ -1,14 +1,16 @@
 <template>
-    <VFadeTransition>
-        <ConsoleOverlay 
-            :activator="currentHover.hoverTarget"
-            :key-name="currentHover.keyName"
-            :revert-to-softkey="currentHover.isSoftkey"
-            :simultaneous-hover-index="currentHover.simultaneousHoverIndex"
-    
-            v-if="currentHover.hoverTarget != undefined"
-        />
-    </VFadeTransition>
+    <ClientOnly>
+        <VFadeTransition hide-on-leave>
+            <ConsoleOverlay 
+                :activator="(currentHover.hoverTarget as unknown as HTMLElement) /*Needs to be like due to issues ClientOnly components*/" 
+                :key-name="currentHover.keyName"
+                :revert-to-softkey="currentHover.isSoftkey"
+                :simultaneous-hover-index="currentHover.simultaneousHoverIndex"
+        
+                v-if="currentHover.hoverTarget != undefined"
+            />
+        </VFadeTransition>
+    </ClientOnly>
     <VCard
         :class="normalizeBoolean(inline) ? $style.inline : undefined"
         elevation="2"
@@ -68,6 +70,7 @@ import SegmentSeparator from "./components/SegmentSeparator.vue";
 import LightingKey, { KeyHoveringEventSchema } from "./LightingKey.vue";
 import ConsoleOverlay from "./components/ConsoleOverlay.vue"
 import * as boolean from "../../../util/boolean";
+import { PropType } from "vue";
 
 export default {
     props: {

@@ -9,30 +9,34 @@
 
         :class="$style.lightingKey + ' ' + (hovering ? $style.hovering : undefined)"  
     />
-    <template v-if="!partOfCommand">
-        <!-- Add in the console overlay if and only if this key isn't part of a command (cause the LightingCommand.vue component handles the overlay displaying) -->
-        <ConsoleOverlay
-            :activator="activator"
-            :key-name="keyName"
-            :revert-to-softkey="isSoftkey"
-    
-            v-if="hovering"
-        />
-    </template>
+    <ClientOnly>
+        <!-- Required ClientOnly as ConsoleOverlay uses cookies which reference the 'document' client property -->
+        <template v-if="!partOfCommand">
+            <!-- Add in the console overlay if and only if this key isn't part of a command (cause the LightingCommand.vue component handles the overlay displaying) -->
+            <ConsoleOverlay
+                :activator="activator"
+                :key-name="keyName"
+                :revert-to-softkey="isSoftkey"
+        
+                v-if="hovering"
+            />
+        </template>
+    </ClientOnly>
 </template>
 
 <script lang="ts">
-export interface KeyHoveringEventSchema {
-    hoverTarget: Element|undefined //undefined if not hovering
-    keyName: string|string[]
-    isSoftkey: boolean
-    simultaneousHoverIndex?: number
-}
-
 import Segment from "./components/Segment.vue";
 import * as boolean from "../../../util/boolean"
 import ConsoleOverlay from "./components/ConsoleOverlay.vue";
 import { stylizeKeyName } from "../../..//util/lighting/formatters";
+import { PropType } from "vue"
+
+export interface KeyHoveringEventSchema {
+    hoverTarget: PropType<HTMLElement>|undefined //undefined if not hovering
+    keyName: string|string[]
+    isSoftkey: boolean
+    simultaneousHoverIndex?: number
+}
 
 const LIGHT_HARDKEY_COLOUR = "cyan-darken-3";
 const DARK_HARDKEY_COLOUR = "cyan-darken-4";
@@ -100,7 +104,7 @@ export default {
         return {
             hovering: false,
 
-            activator: undefined as Element|undefined
+            activator: undefined as HTMLElement|undefined
         };
     },
     methods: {
@@ -111,7 +115,7 @@ export default {
             this.hovering = newState;
 
             if (newState) {
-                this.activator = event.target as Element;
+                this.activator = event.target as HTMLElement;
             } else {
                 this.activator = undefined;
             }

@@ -1,36 +1,43 @@
 <template>
     <VAlert
-        :border-color="hasPreference ? 'success': 'warning'"
+        :border-color="boardPreferenceExists ? 'success': 'warning'"
         closable
+        class="lightingBoardPreferenceAlert"
         border="start"
     >
-        <div v-if="hasPreference">
-            <p>Your lighting board is current set to <i>{{ preferenceName }}</i>.</p>
-            <p><ConfigurePopup/> if you want to change this.</p>
-        </div>
-        <div v-else>
-            <p>You haven't set what lighting board you use! To get more tailored examples as you read through the wiki, <ConfigurePopup/></p>
-            <p>By default, examples will assume you use an ETC Ion XE console.</p>
-        </div>
+        <VFadeTransition mode="out-in">
+            <div v-if="boardPreferenceExists">
+                <p>Your lighting board is current set to <VFadeTransition mode="out-in"><span :key="boardPreference"><i>{{ boardPreference }}</i>.</span></VFadeTransition></p>
+            </div>
+            <div v-else>
+                <p>You haven't set what lighting board you use!</p>
+                <p>By default, examples will assume you use an ETC Ion XE console.</p>
+            </div>
+        </VFadeTransition>
+        <p><ConfigurePopup/> if you want to change you preferences.</p>
     </VAlert>
 </template>
 
+<script setup lang="ts">
+//Import the lighting pref store
+import { useLightingPrefsStore } from "../../store/lightingPrefs";
+import { storeToRefs } from "pinia";
+
+const store = useLightingPrefsStore();
+
+const { boardPreference, boardPreferenceExists } = storeToRefs(store)
+</script>
+
 <script lang="ts">
-import {checkIfPreference, getPreference} from "../../util/lighting/lightingBoardCookieWrapper";
 import ConfigurePopup from "./configureBoard/ConfigurePopup.vue";
 
 export default {
-    components: {ConfigurePopup},
-    computed: {
-        hasPreference() {
-            return checkIfPreference();
-        },
-        preferenceName() {
-            return getPreference();
-        }
-    },
-    mounted() {
-
-    }
+    components: {ConfigurePopup}
 }
 </script>
+
+<style>
+.lightingBoardPreferenceAlert > div.v-alert__border {
+    transition: color 0.3s linear !important;
+}
+</style>
